@@ -28,7 +28,7 @@
     "firebase": "^7.9.0",
     "geofirestore": "^4.4.2",
     "i18n-js": "^3.8.0",
-    "lottie-react-native": "~2.6.1",
+    "lottie-react-native": "^5.0.1",
     "path": "^0.12.7",
     "popup-ui": "^1.2.2",
     "react": "17.0.1",
