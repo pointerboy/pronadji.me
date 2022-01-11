@@ -42,6 +42,11 @@ const getCurrentLocation = async () => {
       const location = await Location.getCurrentPositionAsync({
         timeout: 5000,
       });
+
+      // TODO: Maci debug posle
+      console.log(location.coords.longitude);
+      console.log(location.coords.latitude);
+
       return {
         lat: location.coords.latitude,
         lng: location.coords.longitude,
