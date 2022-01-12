@@ -121,6 +121,17 @@ export const createPost = (
   expirationDate
 ) => {
   return async (dispatch, getState) => {
+
+    console.log(
+        "Title" + title + '\n',
+        "Desc: " + description + '\n',
+        "Cat:" + categoryId + '\n' ,
+        "Image" + selectedImage + '\n',
+        "Location" + selectedLocation + '\n',
+        "Date" + expirationDate + '\n');
+
+    selectedLocation.address = 'proba_123';
+
     const uid = firebase.auth().currentUser.uid;
     const firestore = firebase.firestore();
     const geoFirestore = geofirestore.initializeApp(firestore);
@@ -160,6 +171,19 @@ export const createPost = (
       lng: selectedLocation.lng,
     });
 
+    console.log( id,
+        title,
+        description,
+        categoryId,
+        imageUrl,
+        selectedLocation.mapUrl,
+        selectedLocation.lat,
+        selectedLocation.lng,
+        expirationDate,
+        uid,
+        distance,
+        selectedLocation.toString());
+
     dispatch({
       type: CREATE_POST,
       post: new Post(
@@ -174,7 +198,7 @@ export const createPost = (
         expirationDate,
         uid,
         distance,
-        selectedLocation.address
+        selectedLocation.toString()
       ),
     });
   };
