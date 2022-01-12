@@ -69,6 +69,7 @@ const MyProfileScreen = (props) => {
             {user.nickname}
           </MyText>
           <MyText style={styles.email}>{user.email}</MyText>
+          <MyText style={styles.email}>{user.phoneNumber}</MyText>
         </View>
       </View>
 

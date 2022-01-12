@@ -9,6 +9,7 @@ export const SET_USER = "SET_USER";
 export const SET_LOCATION = "SET_LOCATION";
 export const SET_NICKNAME = "SET_NICKNAME";
 export const SET_IMAGE_URL = "SET_IMAGE_URL";
+export const SET_PHONE_NUMBER = "SET_PHONE_NUMBER"
 export const RESET = "RESET";
 
 export const loginSuccess = () => {
@@ -23,6 +24,7 @@ export const loginSuccess = () => {
         email: userData.email,
         nickname: userData.nickname,
         imageUrl: userData.imageUrl,
+        phoneNumber: userData.phoneNumber
       },
     });
   };
@@ -139,7 +141,7 @@ export const login = (email, password) => {
   };
 };
 
-export const signUp = (email, password, nickname, image) => {
+export const signUp = (email, password, nickname, image, phoneNumber) => {
   return async (dispatch) => {
     const { user } = await firebase
       .auth()
@@ -160,6 +162,7 @@ export const signUp = (email, password, nickname, image) => {
       email: email,
       nickname: nickname,
       imageUrl: imageUrl,
+      phoneNumber: phoneNumber
     });
 
     dispatch(loginSuccess());

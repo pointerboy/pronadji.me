@@ -36,6 +36,7 @@ const NextSignUpScreen = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedImage, setSelectedImage] = useState();
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const passwordRef = useRef(null);
@@ -56,12 +57,17 @@ const NextSignUpScreen = (props) => {
       if (password !== confirmPassword) {
         throw new Error(i18n.t("nextSignUpScreen.passwordError"));
       }
+
+      if(phoneNumber.length < 6){
+        throw new Error("Neophodno je da dodate broj telefona!");
+      }
+
       await dispatch(
         signUp(
           email.trim(),
           password,
           props.route.params.nickname,
-          selectedImage
+          selectedImage, phoneNumber
         )
       );
       showSuccess("Registered successfully", "Welcome to Lost & Found App.");
@@ -143,6 +149,13 @@ const NextSignUpScreen = (props) => {
               onChangeText={setConfirmPassword}
               value={confirmPassword}
               ref={confirmPasswordRef}
+            />
+            <MyTextInput
+                placeholder="Broj elefona"
+                value={phoneNumber}
+                onChangeText={setPhoneNumber}
+                keyboardType='numeric'
+                maxLength={12}
             />
           </View>
 

@@ -4,6 +4,7 @@ import {
   SET_LOCATION,
   SET_NICKNAME,
   SET_USER,
+  SET_PHONE_NUMBER
 } from "../actions/user";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   nickname: "",
   imageUrl: null,
   location: null,
+  phoneNumber: ""
 };
 
 const setUser = (state, action) => {
@@ -20,6 +22,7 @@ const setUser = (state, action) => {
     email: userData.email,
     nickname: userData.nickname,
     imageUrl: userData.imageUrl,
+    phoneNumber: userData.phoneNumber
   };
 };
 
@@ -44,6 +47,13 @@ const setImageUrl = (state, action) => {
   };
 };
 
+const setPhoneNumber = (state, action) => {
+  return {
+    ...state,
+    phoneNumber: action.phoneNumber,
+  };
+};
+
 const reset = (state, action) => {
   return {
     ...state,
@@ -63,6 +73,8 @@ const reducer = (state = initialState, action) => {
       return setNickname(state, action);
     case SET_IMAGE_URL:
       return setImageUrl(state, action);
+    case SET_PHONE_NUMBER:
+      return setPhoneNumber(state, action);
     case RESET:
       return reset(state, action);
     default:
