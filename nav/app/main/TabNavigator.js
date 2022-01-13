@@ -4,12 +4,16 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import HeaderButton from "../../../components/UI/HeaderButton";
 import colors from "../../../shared/colors";
+
 import HomeNavigator, {
   navigatorOptions as homeNavigatorOptions,
 } from "./HomeNavigator";
 import MyPostsNavigator, {
   navigatorOptions as myPostsNavigatorOptions,
 } from "./MyPostsNavigator";
+import InfoNavigator, {
+  navigatorOptions as infoNavigatorOptions,
+} from "./InfoNavigator"
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -45,6 +49,11 @@ const TabNavigator = (props) => {
         name="MyPostsNavigator"
         component={MyPostsNavigator}
         options={myPostsNavigatorOptions}
+      />
+      <Tab.Screen
+        name="InfoNavigator"
+        component={InfoNavigator}
+        options={infoNavigatorOptions}
       />
     </Tab.Navigator>
   );
