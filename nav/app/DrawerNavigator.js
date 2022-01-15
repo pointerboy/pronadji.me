@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 
 import MainNavigator, {navigatorOptions as mainNavigatorOptions,} from "./main/MainNavigator";
 import SettingsNavigator, {navigatorOptions as settingsNavigatorOptions,} from "./settings/SettingsNavigator";
-import MyText from "../../components/UI/MyText";
+import CustomText from "../../components/UI/CustomText";
 import {logout} from "../../store/actions/user";
 
 const Drawer = createDrawerNavigator();
@@ -20,7 +20,7 @@ const DrawerContent = (props) => {
                 <Image
                     style={styles.logo}
                 />
-                <MyText style={styles.title}>Lost & Found</MyText>
+                <CustomText style={styles.title}>Lost & Found</CustomText>
             </View>
             <DrawerItemList {...props} />
             <DrawerItem

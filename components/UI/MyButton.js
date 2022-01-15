@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, TouchableOpacity} from "react-native";
 
-import MyText from "./MyText";
+import CustomText from "./CustomText";
 import Colors from "../../shared/colors";
 
 const MyButton = (props) => {
@@ -11,7 +11,7 @@ const MyButton = (props) => {
             onPress={props.onPress}
             activeOpacity={0.6}
         >
-            <MyText style={styles.title}>{props.title}</MyText>
+            <CustomText style={styles.title}>{props.title}</CustomText>
         </TouchableOpacity>
     );
 };

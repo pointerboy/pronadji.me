@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, Text} from "react-native";
 
-const MyText = (props) => {
+const CustomText = (props) => {
     return (
         <Text
             style={{...styles.text, ...props.style}}
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MyText;
+export default CustomText;

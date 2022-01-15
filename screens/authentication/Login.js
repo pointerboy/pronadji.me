@@ -6,8 +6,8 @@ import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-she
 import Constants from "expo-constants";
 
 import MyButton from "../../components/UI/MyButton";
-import MyText from "../../components/UI/MyText";
-import MyTextInput from "../../components/UI/MyTextInput";
+import CustomText from "../../components/UI/CustomText";
+import CustomTextInput from "../../components/UI/CustomTextInput";
 import colors from "../../shared/colors";
 import AuthHeader from "../../components/auth/AuthHeader";
 import {login, loginWithFacebook} from "../../store/actions/user";
@@ -61,7 +61,7 @@ const LoginScreen = (props) => {
                     />
 
                     <View style={styles.textInputContainer}>
-                        <MyTextInput
+                        <CustomTextInput
                             placeholder="Email adresa"
                             onChangeText={setEmail}
                             value={email}
@@ -71,7 +71,7 @@ const LoginScreen = (props) => {
                             onSubmitEditing={() => passwordRef.current.focus()}
                             blurOnSubmit={false}
                         />
-                        <MyTextInput
+                        <CustomTextInput
                             placeholder="Lozinka"
                             secureTextEntry={true}
                             onChangeText={setPassword}
@@ -90,14 +90,14 @@ const LoginScreen = (props) => {
                     </View>
 
                     <View style={styles.centerContainer}>
-                        <MyText>Nema nalog?</MyText>
+                        <CustomText>Nema nalog?</CustomText>
                         <TouchableOpacity
                             onPress={switchToSignUpHandler}
                             activeOpacity={0.6}
                         >
-                            <MyText style={styles.switchToSignUpText}>
+                            <CustomText style={styles.switchToSignUpText}>
                                 Kreirajte ga odmah
-                            </MyText>
+                            </CustomText>
                         </TouchableOpacity>
                     </View>
                 </KeyboardAvoidingView>

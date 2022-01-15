@@ -3,7 +3,7 @@ import {StyleSheet, TextInput, View} from "react-native";
 
 import colors from "../../shared/colors";
 
-const MyTextInput = React.forwardRef((props, ref) => {
+const CustomTextInput = React.forwardRef((props, ref) => {
     return (
         <View style={styles.textInputContainer}>
             <TextInput {...props} style={styles.textInput} ref={ref}/>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MyTextInput;
+export default CustomTextInput;

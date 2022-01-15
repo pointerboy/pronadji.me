@@ -2,7 +2,7 @@ import React from "react";
 import {Image, ScrollView, StyleSheet, TouchableOpacity, View,} from "react-native";
 import {CardStyleInterpolators} from "@react-navigation/stack";
 
-import MyText from "../../../components/UI/MyText";
+import CustomText from "../../../components/UI/CustomText";
 import colors from "../../../shared/colors";
 import CategoryList from "../../../components/app/main/CategoryList";
 import {Feather} from "@expo/vector-icons";
@@ -33,17 +33,17 @@ const PostDetailScreen = (props) => {
     return (
         <ScrollView style={styles.screen}>
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>
+                <CustomText style={styles.title}>
                     Kategorija
-                </MyText>
+                </CustomText>
             </View>
 
             <CategoryList selectedMode categoryId={categoryId}/>
 
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>
+                <CustomText style={styles.title}>
                     Priložena fotografija
-                </MyText>
+                </CustomText>
             </View>
 
             <View style={styles.container}>
@@ -52,25 +52,25 @@ const PostDetailScreen = (props) => {
 
             <View style={styles.distanceContainer}>
                 <Feather size={30} name={"navigation"}/>
-                <MyText style={styles.title}>
+                <CustomText style={styles.title}>
                     {distanceText}
-                </MyText>
+                </CustomText>
             </View>
 
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>
+                <CustomText style={styles.title}>
                     Opis
-                </MyText>
+                </CustomText>
             </View>
 
             <View style={{paddingHorizontal: 10}}>
-                <MyText style={styles.text}>{description}</MyText>
+                <CustomText style={styles.text}>{description}</CustomText>
             </View>
 
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>
+                <CustomText style={styles.title}>
                     Lokacija
-                </MyText>
+                </CustomText>
             </View>
 
             <TouchableOpacity

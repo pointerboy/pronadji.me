@@ -6,7 +6,7 @@ import i18n from "i18n-js";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 
 import HeaderButton from "../../../components/UI/HeaderButton";
-import MyText from "../../../components/UI/MyText";
+import CustomText from "../../../components/UI/CustomText";
 import colors from "../../../shared/colors";
 import {changeLanguage, changeLanguageActionSheetOptions,} from "../../../shared/utils";
 
@@ -18,7 +18,7 @@ const Setting = (props) => {
             activeOpacity={0.6}
         >
             <Ionicons name={props.iconName} size={25} color="black"/>
-            <MyText style={styles.label}>{props.label}</MyText>
+            <CustomText style={styles.label}>{props.label}</CustomText>
         </TouchableOpacity>
     );
 };
@@ -37,7 +37,7 @@ const SettingsScreen = (props) => {
     return (
         <ScrollView contentContainerStyle={styles.screen}>
             <View style={{...styles.container, paddingTop: 0}}>
-                <MyText style={styles.title}>{i18n.t("settingsScreen.header1")}</MyText>
+                <CustomText style={styles.title}>{i18n.t("settingsScreen.header1")}</CustomText>
                 <Setting
                     label={i18n.t("settingsScreen.item1")}
                     iconName={Platform.OS === "android" ? "md-card" : "ios-card"}
@@ -46,7 +46,7 @@ const SettingsScreen = (props) => {
             </View>
 
             <View style={styles.container}>
-                <MyText style={styles.title}>{i18n.t("settingsScreen.header2")}</MyText>
+                <CustomText style={styles.title}>{i18n.t("settingsScreen.header2")}</CustomText>
                 <Setting
                     label={i18n.t("settingsScreen.item2")}
                     iconName={Platform.OS === "android" ? "md-globe" : "ios-globe"}

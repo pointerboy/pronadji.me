@@ -6,8 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import i18n from "i18n-js";
 
 import {changeNickname} from "../../../store/actions/user";
-import MyTextInput from "../../../components/UI/MyTextInput";
-import MyText from "../../../components/UI/MyText";
+import CustomTextInput from "../../../components/UI/CustomTextInput";
+import CustomText from "../../../components/UI/CustomText";
 import colors from "../../../shared/colors";
 import Loader from "../../../components/UI/Loader";
 import {showError} from "../../../shared/utils";
@@ -32,7 +32,7 @@ const ChangeNicknameScreen = (props) => {
     return (
         <View style={styles.screen}>
             <Loader visible={isLoading}/>
-            <MyTextInput onChangeText={setText} value={text}/>
+            <CustomTextInput onChangeText={setText} value={text}/>
             <TouchableOpacity
                 style={{
                     marginTop: 12,
@@ -45,14 +45,14 @@ const ChangeNicknameScreen = (props) => {
                 activeOpacity={0.6}
                 onPress={changeNicknameHandler}
             >
-                <MyText
+                <CustomText
                     style={{
                         color: "white",
                         fontSize: 16,
                     }}
                 >
                     {i18n.t("changeNicknameScreen.buttonText")}
-                </MyText>
+                </CustomText>
             </TouchableOpacity>
         </View>
     );

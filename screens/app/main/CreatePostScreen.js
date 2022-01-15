@@ -16,8 +16,8 @@ import {useDispatch, useSelector} from "react-redux";
 import i18n from "i18n-js";
 
 import HeaderButton from "../../../components/UI/HeaderButton";
-import MyText from "../../../components/UI/MyText";
-import MyTextInput from "../../../components/UI/MyTextInput";
+import CustomText from "../../../components/UI/CustomText";
+import CustomTextInput from "../../../components/UI/CustomTextInput";
 import CategoryList from "../../../components/app/main/CategoryList";
 import colors from "../../../shared/colors";
 import {showError, showSuccess, takeImage, takeImageActionSheetOptions,} from "../../../shared/utils";
@@ -142,13 +142,13 @@ const CreatePostScreen = (props) => {
             <Loader visible={isLoading}/>
 
             <View style={{...styles.titleContainer, paddingTop: 25}}>
-                <MyText style={styles.title}>
+                <CustomText style={styles.title}>
                     {i18n.t("createPostScreen.header1")}
-                </MyText>
+                </CustomText>
             </View>
 
             <View style={styles.textInputContainer}>
-                <MyTextInput
+                <CustomTextInput
                     placeholder={i18n.t("createPostScreen.title")}
                     value={title}
                     onChangeText={setTitle}
@@ -156,7 +156,7 @@ const CreatePostScreen = (props) => {
                     returnKeyType="next"
                     onSubmitEditing={() => descriptionRef.current.focus()}
                 />
-                <MyTextInput
+                <CustomTextInput
                     placeholder={i18n.t("createPostScreen.description")}
                     value={description}
                     onChangeText={setDescription}
@@ -167,9 +167,9 @@ const CreatePostScreen = (props) => {
             <CategoryList inputMode onChange={setCategoryId} value={categoryId}/>
 
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>
+                <CustomText style={styles.title}>
                     {i18n.t("createPostScreen.header2")}
-                </MyText>
+                </CustomText>
             </View>
 
             <TouchableOpacity
@@ -186,17 +186,17 @@ const CreatePostScreen = (props) => {
                             size={80}
                             color="black"
                         />
-                        <MyText style={styles.imageText}>
+                        <CustomText style={styles.imageText}>
                             {i18n.t("createPostScreen.imgHolder")}
-                        </MyText>
+                        </CustomText>
                     </View>
                 )}
             </TouchableOpacity>
 
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>
+                <CustomText style={styles.title}>
                     {i18n.t("createPostScreen.header3")}
-                </MyText>
+                </CustomText>
             </View>
 
             {isLoadingLocation ? (
@@ -219,7 +219,7 @@ const CreatePostScreen = (props) => {
             )}
 
             <View style={styles.addressContainer}>
-                <MyText style={styles.text}>{selectedLocation.address}</MyText>
+                <CustomText style={styles.text}>{selectedLocation.address}</CustomText>
             </View>
         </ScrollView>
     );

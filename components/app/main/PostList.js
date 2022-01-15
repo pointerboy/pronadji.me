@@ -2,7 +2,7 @@ import React from "react";
 import {FlatList, Platform, StyleSheet, View} from "react-native";
 
 import PostItem from "./PostItem";
-import MyText from "../../UI/MyText";
+import CustomText from "../../UI/CustomText";
 import {Ionicons} from "@expo/vector-icons";
 import colors from "../../../shared/colors";
 
@@ -16,7 +16,7 @@ const PostList = (props) => {
                 color="black"
                 size={80}
             />
-            <MyText style={styles.text}>Nema skorašnjih objava</MyText>
+            <CustomText style={styles.text}>Nema skorašnjih objava</CustomText>
         </View>
     );
 

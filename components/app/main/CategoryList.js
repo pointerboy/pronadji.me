@@ -3,7 +3,7 @@ import {StyleSheet, TouchableOpacity, View} from "react-native";
 import {Feather} from "@expo/vector-icons";
 import {useSelector} from "react-redux";
 
-import MyText from "../../UI/MyText";
+import CustomText from "../../UI/CustomText";
 
 const CategoryList = (props) => {
     const categories = useSelector((state) => state.categories.categories);
@@ -40,7 +40,7 @@ const CategoryList = (props) => {
                             />
                         )}
                     </View>
-                    <MyText style={styles.text}>{title}</MyText>
+                    <CustomText style={styles.text}>{title}</CustomText>
                 </TouchableOpacity>
             );
         } else if (selectedMode) {
@@ -55,7 +55,7 @@ const CategoryList = (props) => {
                             />
                         )}
                     </View>
-                    <MyText style={styles.text}>{title}</MyText>
+                    <CustomText style={styles.text}>{title}</CustomText>
                 </View>
             );
         }

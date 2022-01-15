@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, TouchableOpacity, View} from "react-native";
 
-import MyText from "../../../components/UI/MyText";
+import CustomText from "../../UI/CustomText";
 import colors from "../../../shared/colors";
 
 const SettingItem = (props) => {
@@ -13,15 +13,15 @@ const SettingItem = (props) => {
                     onPress={props.onPress}
                     activeOpacity={0.6}
                 >
-                    <MyText style={styles.title}>{props.title}</MyText>
-                    <MyText style={styles.contentText} numberOfLines={1}>
+                    <CustomText style={styles.title}>{props.title}</CustomText>
+                    <CustomText style={styles.contentText} numberOfLines={1}>
                         {props.text}
-                    </MyText>
+                    </CustomText>
                 </TouchableOpacity>
             ) : (
                 <View style={styles.contentBox}>
-                    <MyText style={styles.disableTitle}>{props.title}</MyText>
-                    <MyText style={styles.disableContentText}>{props.text}</MyText>
+                    <CustomText style={styles.disableTitle}>{props.title}</CustomText>
+                    <CustomText style={styles.disableContentText}>{props.text}</CustomText>
                 </View>
             )}
         </View>

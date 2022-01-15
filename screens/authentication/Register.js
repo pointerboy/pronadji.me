@@ -5,8 +5,8 @@ import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-she
 import Constants from "expo-constants";
 
 import MyButton from "../../components/UI/MyButton";
-import MyText from "../../components/UI/MyText";
-import MyTextInput from "../../components/UI/MyTextInput";
+import CustomText from "../../components/UI/CustomText";
+import CustomTextInput from "../../components/UI/CustomTextInput";
 import colors from "../../shared/colors";
 import AuthHeader from "../../components/auth/AuthHeader";
 import {changeLanguage, changeLanguageActionSheetOptions, showError,} from "../../shared/utils";
@@ -50,7 +50,7 @@ const SignUpScreen = (props) => {
                     />
 
                     <View style={styles.textInputContainer}>
-                        <MyTextInput
+                        <CustomTextInput
                             placeholder="Unesite korisničko ime"
                             onChangeText={setNickname}
                             value={nickname}
@@ -63,15 +63,15 @@ const SignUpScreen = (props) => {
                     />
 
                     <View style={styles.centerContainer}>
-                        <MyText>Već imate nalog?</MyText>
+                        <CustomText>Već imate nalog?</CustomText>
 
                         <TouchableOpacity
                             onPress={switchToLoginHandler}
                             activeOpacity={0.6}
                         >
-                            <MyText style={styles.switchToLoginText}>
+                            <CustomText style={styles.switchToLoginText}>
                                 Prijavite se
-                            </MyText>
+                            </CustomText>
                         </TouchableOpacity>
                     </View>
                 </KeyboardAvoidingView>

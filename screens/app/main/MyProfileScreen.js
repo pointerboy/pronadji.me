@@ -5,7 +5,7 @@ import {useIsFocused} from "@react-navigation/native";
 
 import PostList from "../../../components/app/main/PostList";
 import {fetchMyPosts} from "../../../store/actions/posts";
-import CText from "../../../components/UI/MyText";
+import CText from "../../../components/UI/CustomText";
 import {showError} from "../../../shared/utils";
 import colors from "../../../shared/colors";
 import {Feather} from "@expo/vector-icons";

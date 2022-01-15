@@ -8,7 +8,7 @@ import i18n from "i18n-js";
 
 
 
-import MyTextInput from "../../components/UI/MyTextInput";
+import CustomTextInput from "../../components/UI/CustomTextInput";
 import MyButton from "../../components/UI/MyButton";
 import AuthHeader from "../../components/auth/AuthHeader";
 import {showError, showSuccess, takeImage, takeImageActionSheetOptions,} from "../../shared/utils";
@@ -106,7 +106,7 @@ const NextSignUpScreen = (props) => {
                     </View>
 
                     <View style={styles.textInputContainer}>
-                        <MyTextInput
+                        <CustomTextInput
                             placeholder="Unesite email adresu"
                             onChangeText={setEmail}
                             value={email}
@@ -116,7 +116,7 @@ const NextSignUpScreen = (props) => {
                             onSubmitEditing={() => passwordRef.current.focus()}
                             blurOnSubmit={false}
                         />
-                        <MyTextInput
+                        <CustomTextInput
                             placeholder="Unesite jaku lozinku"
                             secureTextEntry={true}
                             onChangeText={setPassword}
@@ -126,14 +126,14 @@ const NextSignUpScreen = (props) => {
                             onSubmitEditing={() => confirmPasswordRef.current.focus()}
                             blurOnSubmit={false}
                         />
-                        <MyTextInput
+                        <CustomTextInput
                             placeholder="Potvrdite lozinku"
                             secureTextEntry={true}
                             onChangeText={setConfirmPassword}
                             value={confirmPassword}
                             ref={confirmPasswordRef}
                         />
-                        <MyTextInput
+                        <CustomTextInput
                             placeholder="Unesite Vaš broj telefona"
                             value={phoneNumber}
                             onChangeText={setPhoneNumber}

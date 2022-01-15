@@ -10,7 +10,7 @@ import CategoryList from "../../../components/app/main/CategoryList";
 import PostList from "../../../components/app/main/PostList";
 import colors from "../../../shared/colors";
 import Post from "../../../models/post";
-import MyText from "../../../components/UI/MyText";
+import CustomText from "../../../components/UI/CustomText";
 import {API_KEY} from "env";
 
 const SearchScreen = (props) => {
@@ -126,7 +126,7 @@ const SearchScreen = (props) => {
             />
 
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>{i18n.t("searchScreen.header1")}</MyText>
+                <CustomText style={styles.title}>{i18n.t("searchScreen.header1")}</CustomText>
             </View>
 
             {isLoadingLocation ? (
@@ -149,7 +149,7 @@ const SearchScreen = (props) => {
             )}
 
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>{i18n.t("searchScreen.header2")}</MyText>
+                <CustomText style={styles.title}>{i18n.t("searchScreen.header2")}</CustomText>
             </View>
         </View>
     );

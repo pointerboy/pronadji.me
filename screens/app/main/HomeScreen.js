@@ -5,7 +5,7 @@ import {useIsFocused} from "@react-navigation/native";
 import {useDispatch, useSelector} from "react-redux";
 
 import CategoryList from "../../../components/app/main/CategoryList";
-import MyText from "../../../components/UI/MyText";
+import CustomText from "../../../components/UI/CustomText";
 import PostList from "../../../components/app/main/PostList";
 import colors from "../../../shared/colors";
 import {fetchAllPosts} from "../../../store/actions/posts";
@@ -67,7 +67,7 @@ const HomeScreen = (props) => {
                     color="black"
                     style={styles.searchIcon}
                 />
-                <MyText style={styles.searchText}>Pretraga lokacije</MyText>
+                <CustomText style={styles.searchText}>Pretraga lokacije</CustomText>
             </TouchableOpacity>
 
             <CategoryList
@@ -78,7 +78,7 @@ const HomeScreen = (props) => {
             />
 
             <View style={styles.titleContainer}>
-                <MyText style={styles.title}>Objave blizu tebe</MyText>
+                <CustomText style={styles.title}>Objave blizu tebe</CustomText>
             </View>
         </View>
     );

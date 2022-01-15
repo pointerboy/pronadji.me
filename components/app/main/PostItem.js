@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {Image, StyleSheet, TouchableOpacity, View,} from "react-native";
 import {Feather} from "@expo/vector-icons"
 import i18n from "i18n-js";
-import MyText from "../../UI/MyText";
+import CustomText from "../../UI/CustomText";
 
 const PostItem = (props) => {
     const categories = useSelector((state) => state.categories.categories);
@@ -48,9 +48,9 @@ const PostItem = (props) => {
             />
 
             <View style={{...styles.cardInfo, backgroundColor: bgColor}}>
-                <MyText style={styles.title} numberOfLines={1}>
+                <CustomText style={styles.title} numberOfLines={1}>
                     {props.title}
-                </MyText>
+                </CustomText>
 
                 <View style={styles.cardStatus}>
                     <View style={styles.leftStatusContainer}>
@@ -59,7 +59,7 @@ const PostItem = (props) => {
                             size={17}
                             color="white"
                         />
-                        <MyText style={styles.statusText}>{distanceText}</MyText>
+                        <CustomText style={styles.statusText}>{distanceText}</CustomText>
                     </View>
 
                     <View style={styles.rightStatusContainer}>
@@ -68,7 +68,7 @@ const PostItem = (props) => {
                             name="clock"
                             color="white"
                         />
-                        <MyText style={styles.statusText}>{countdownText}</MyText>
+                        <CustomText style={styles.statusText}>{countdownText}</CustomText>
                     </View>
                 </View>
             </View>

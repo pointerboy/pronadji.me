@@ -1,14 +1,14 @@
 import React from "react";
 import {Image, StyleSheet, View} from "react-native";
 
-import MyText from "../UI/MyText";
+import CustomText from "../UI/CustomText";
 
 const Header = (props) => {
     return (
         <View style={props.style}>
             {props.image && <Image style={styles.image} source={props.image}/>}
-            <MyText style={styles.title}>{props.title}</MyText>
-            <MyText style={styles.subtitle}>{props.subtitle}</MyText>
+            <CustomText style={styles.title}>{props.title}</CustomText>
+            <CustomText style={styles.subtitle}>{props.subtitle}</CustomText>
         </View>
     );
 };
