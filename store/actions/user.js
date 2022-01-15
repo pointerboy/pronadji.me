@@ -169,41 +169,6 @@ export const signUp = (email, password, nickname, image, phoneNumber) => {
     };
 };
 
-export const loginWithFacebook = () => {
-    return async (dispatch) => {
-        const {type, token} = await Facebook.logInWithReadPermissionsAsync();
-
-        if (type === "success") {
-            await firebase
-                .auth()
-                .setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-            const credential = firebase.auth.FacebookAuthProvider.credential(token);
-            const facebookProfileData = await firebase
-                .auth()
-                .signInWithCredential(credential);
-
-            const uid = facebookProfileData.user.uid;
-            const email = facebookProfileData.additionalUserInfo.profile.email;
-            const nickname = facebookProfileData.additionalUserInfo.profile.name;
-            const imageUrl =
-                facebookProfileData.additionalUserInfo.profile.picture.data.url;
-            const isNewUser = facebookProfileData.additionalUserInfo.isNewUser;
-
-            if (isNewUser) {
-                await firebase.firestore().collection("users").doc(uid).set({
-                    email: email,
-                    nickname: nickname,
-                    imageUrl: imageUrl,
-                });
-            }
-
-            dispatch(loginSuccess());
-        } else {
-            throw new Error("");
-        }
-    };
-};
-
 export const logout = () => {
     return async (dispatch) => {
         await firebase.auth().signOut();
