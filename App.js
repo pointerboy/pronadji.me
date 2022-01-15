@@ -1,5 +1,5 @@
 import React, {Suspense} from "react";
-import {YellowBox} from "react-native";
+import { LogBox } from 'react-native';
 import * as Font from "expo-font";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
@@ -19,28 +19,17 @@ import StartupScreen from "./screens/StartupScreen";
 import firebase from 'firebase'
 
 const firebaseConfig = {
-
     apiKey: "AIzaSyBBOAs3WcB8pipkcnF1Ng6Ztk3e0fBVMfs",
-
     authDomain: "lostandfound-859a8.firebaseapp.com",
-
     databaseURL: "https://lostandfound-859a8-default-rtdb.europe-west1.firebasedatabase.app",
-
     projectId: "lostandfound-859a8",
-
     storageBucket: "lostandfound-859a8.appspot.com",
-
     messagingSenderId: "604456261194",
-
     appId: "1:604456261194:web:78a9f55795aaaa891778b3",
-
     measurementId: "G-S4QGCWS6Y7"
-
 };
 
-// remove setTimeout() warning
-YellowBox.ignoreWarnings(["Setting a timer"]);
-
+LogBox.ignoreLogs(["Setting a timer"]);
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
