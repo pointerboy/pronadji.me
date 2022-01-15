@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
 export const screenOptions = {
     title: i18n.t("accountSettingScreen.headerTitle"),
     headerTitleStyle: {
-        fontFamily: "kanit-light",
     },
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };

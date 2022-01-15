@@ -48,7 +48,6 @@ const ChangeNicknameScreen = (props) => {
                 <MyText
                     style={{
                         color: "white",
-                        fontFamily: "kanit",
                         fontSize: 16,
                     }}
                 >
@@ -80,7 +79,6 @@ const styles = StyleSheet.create({
 export const screenOptions = {
     title: i18n.t("changeNicknameScreen.headerTitle"),
     headerTitleStyle: {
-        fontFamily: "kanit-light",
     },
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };

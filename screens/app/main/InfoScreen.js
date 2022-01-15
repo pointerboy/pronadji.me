@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     },
     nickname: {
         fontSize: 25,
-        fontFamily: "kanit",
     },
     email: {
         color: colors.grey,

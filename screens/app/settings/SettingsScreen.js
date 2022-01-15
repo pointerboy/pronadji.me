@@ -90,7 +90,6 @@ export const screenOptions = (navData) => {
     return {
         headerTitle: i18n.t("settingsScreen.headerTitle"),
         headerTitleStyle: {
-            fontFamily: "kanit-light",
         },
         headerLeft: () => (
             <HeaderButtons HeaderButtonComponent={HeaderButton}>

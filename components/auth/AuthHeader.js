@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 35,
-        fontFamily: "kanit-bold",
     },
     subtitle: {
         fontSize: 30,

@@ -1,10 +1,12 @@
 import React, {useRef, useState} from "react";
-import {Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View, Text} from "react-native";
 import {CardStyleInterpolators} from "@react-navigation/stack";
 import {useDispatch} from "react-redux";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 import {Ionicons} from "@expo/vector-icons";
 import i18n from "i18n-js";
+
+
 
 import MyTextInput from "../../components/UI/MyTextInput";
 import MyButton from "../../components/UI/MyButton";
@@ -12,6 +14,7 @@ import AuthHeader from "../../components/auth/AuthHeader";
 import {showError, showSuccess, takeImage, takeImageActionSheetOptions,} from "../../shared/utils";
 import {signUp} from "../../store/actions/user";
 import Loader from "../../components/UI/Loader";
+import ConfettiCannon from "react-native-confetti-cannon";
 
 const NextSignUpScreen = (props) => {
     const {showActionSheetWithOptions} = useActionSheet();
@@ -54,7 +57,8 @@ const NextSignUpScreen = (props) => {
                     selectedImage, phoneNumber
                 )
             );
-            showSuccess("Registered successfully", "Welcome to Lost & Found App.");
+            showSuccess("Uspešno registrovani!", "Dobro došli na platformu!");
+
         } catch (error) {
             showError(error.message);
             setIsLoading(false);
@@ -73,12 +77,7 @@ const NextSignUpScreen = (props) => {
                 >
                     <Loader visible={isLoading}/>
 
-                    <AuthHeader
-                        style={styles.headerContainer}
-                        title="Lost & Found"
-                        subtitle={props.route.params.nickname}
-                    />
-
+                    <Text style={styles.hintText}>Još samo malo, {props.route.params.nickname}!</Text>
                     <View style={styles.imageInputContainer}>
                         <TouchableOpacity activeOpacity={0.6} onPress={takeImageHandler}>
                             {selectedImage ? (
@@ -108,7 +107,7 @@ const NextSignUpScreen = (props) => {
 
                     <View style={styles.textInputContainer}>
                         <MyTextInput
-                            placeholder={i18n.t("nextSignUpScreen.placeHolderEmail")}
+                            placeholder="Unesite email adresu"
                             onChangeText={setEmail}
                             value={email}
                             autoCapitalize="none"
@@ -118,7 +117,7 @@ const NextSignUpScreen = (props) => {
                             blurOnSubmit={false}
                         />
                         <MyTextInput
-                            placeholder={i18n.t("nextSignUpScreen.placeHolderPass")}
+                            placeholder="Unesite jaku lozinku"
                             secureTextEntry={true}
                             onChangeText={setPassword}
                             value={password}
@@ -128,14 +127,14 @@ const NextSignUpScreen = (props) => {
                             blurOnSubmit={false}
                         />
                         <MyTextInput
-                            placeholder={i18n.t("nextSignUpScreen.placeHolderConfirmPass")}
+                            placeholder="Potvrdite lozinku"
                             secureTextEntry={true}
                             onChangeText={setConfirmPassword}
                             value={confirmPassword}
                             ref={confirmPasswordRef}
                         />
                         <MyTextInput
-                            placeholder="Broj telefona"
+                            placeholder="Unesite Vaš broj telefona"
                             value={phoneNumber}
                             onChangeText={setPhoneNumber}
                             keyboardType='numeric'
@@ -160,6 +159,11 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 35,
         backgroundColor: "white",
+    },
+    hintText:{
+        flex:1,
+        fontSize: 24,
+        textAlign:"center"
     },
     scrollView: {
         flexGrow: 1,

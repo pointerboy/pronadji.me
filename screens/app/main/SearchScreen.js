@@ -194,16 +194,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     title: {
-        fontFamily: "kanit",
         fontSize: 19,
     },
 });
 
 export const screenOptions = {
     headerTitle: i18n.t("searchScreen.headerTitle"),
-    headerTitleStyle: {
-        fontFamily: "kanit-light",
-    },
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 

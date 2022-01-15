@@ -265,7 +265,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     title: {
-        fontFamily: "kanit",
         fontSize: 19,
     },
     text: {
@@ -274,10 +273,8 @@ const styles = StyleSheet.create({
 });
 
 export const screenOptions = {
-    headerTitle: i18n.t("createPostScreen.headerTitle"),
-    headerTitleStyle: {
-        fontFamily: "kanit-light",
-    },
+    headerTitle: 'Kreiranje objave',
+
 };
 
 export default connectActionSheet(CreatePostScreen);

@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: colors.grey,
         fontSize: 15,
-        fontFamily: "kanit-light",
     },
 });
 

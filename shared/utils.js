@@ -7,48 +7,15 @@ import {Toast} from "popup-ui";
 import i18n from "i18n-js";
 import * as Updates from "expo-updates";
 
-import colors from "./colors";
-import {saveLanguageSetting} from "./storage";
+import ConfettiCannon from 'react-native-confetti-cannon';
 
-export const changeLanguageActionSheetOptions = {
-    options: ["English", "ภาษาไทย", i18n.t("utils.cancel")],
-    cancelButtonIndex: 2,
-    icons: [
-        <Ionicons
-            name={
-                Platform.OS === "android" ? "md-arrow-forward" : "ios-arrow-forward"
-            }
-            size={23}
-            color="black"
-        />,
-        <Ionicons
-            name={
-                Platform.OS === "android" ? "md-arrow-forward" : "ios-arrow-forward"
-            }
-            size={23}
-            color="black"
-        />,
-        <Ionicons
-            name={Platform.OS === "android" ? "md-backspace" : "ios-backspace"}
-            size={23}
-            color="black"
-        />,
-    ],
-    title: i18n.t("utils.changeLanguageTitle"),
-    titleTextStyle: {
-        fontFamily: "kanit-light",
-        fontSize: 20,
-    },
-    textStyle: {
-        fontFamily: "kanit-light",
-    },
-};
+import colors from "./colors";
 
 export const takeImageActionSheetOptions = {
     options: [
-        i18n.t("utils.takePicture"),
-        i18n.t("utils.chooseFromGallery"),
-        i18n.t("utils.cancel"),
+        'Uslikajte',
+        'Izaberite iz galerije',
+        'Otkazivanje',
     ],
     cancelButtonIndex: 2,
     icons: [
@@ -68,13 +35,11 @@ export const takeImageActionSheetOptions = {
             color="black"
         />,
     ],
-    title: i18n.t("utils.takeImageTitle"),
+    title: 'Odabir fotografije',
     titleTextStyle: {
-        fontFamily: "kanit-light",
         fontSize: 20,
     },
     textStyle: {
-        fontFamily: "kanit-light",
     },
 };
 
@@ -85,8 +50,7 @@ export const takeImage = async (index) => {
     );
     if (status !== "granted") {
         Alert.alert(
-            i18n.t("utils.permissionErrorTitle"),
-            i18n.t("utils.permissionErrorMsg"),
+            "Morate dozvoliti pristup galeriji kako bi dodali fotografiju",
             [{text: "Okay"}]
         );
         return;
@@ -124,12 +88,13 @@ const showToast = (title, text, color, duration, icon) => {
         timing: duration,
         icon: icon,
     });
+
 };
 
 export const showSuccess = (
     title,
     text,
-    duration = 2000,
+    duration = 6000,
     icon = Platform.OS === "android"
         ? "md-checkmark-circle"
         : "ios-checkmark-circle"
@@ -139,7 +104,7 @@ export const showSuccess = (
         text,
         colors.success,
         duration,
-        <Ionicons name={icon} color="white" size={24}/>
+        <ConfettiCannon count={100} origin={{x: -10, y: 0}} />
     );
 };
 
@@ -157,17 +122,3 @@ export const showError = (
     );
 };
 
-export const changeLanguage = async (index) => {
-    await saveLanguageSetting(index === 0 ? "en" : "th");
-    Alert.alert(i18n.t("utils.alertTitle"), i18n.t("utils.alertMsg"), [
-        {
-            text: i18n.t("utils.restart"),
-            onPress: () => Updates.reloadAsync(),
-        },
-        {text: i18n.t("utils.later")},
-    ]);
-};
-
-export const getCurrentLanguage = () => {
-    return i18n.currentLocale();
-};

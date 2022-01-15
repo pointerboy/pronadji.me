@@ -4,11 +4,9 @@ import {Feather} from "@expo/vector-icons";
 import {useSelector} from "react-redux";
 
 import MyText from "../../UI/MyText";
-import {getCurrentLanguage} from "../../../shared/utils";
 
 const CategoryList = (props) => {
     const categories = useSelector((state) => state.categories.categories);
-    const language = getCurrentLanguage();
 
     const {inputMode, many, onChange, selectedMode, categoryId} = props;
     let {value} = props;
@@ -65,11 +63,11 @@ const CategoryList = (props) => {
 
     const topContent = categories
         .slice(0, 3)
-        .map((item) => buildCategory(item.id, item.title[language], item.color));
+        .map((item) => buildCategory(item.id, item.title, item.color));
 
     const bottomContent = categories
         .slice(3)
-        .map((item) => buildCategory(item.id, item.title[language], item.color));
+        .map((item) => buildCategory(item.id, item.title, item.color));
 
     return (
         <View>

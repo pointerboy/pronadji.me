@@ -29,9 +29,9 @@ const PostItem = (props) => {
     const km = props.distance;
     let distanceText;
     if (km >= 1) {
-        distanceText = `Udaljeno ${km.toFixed(0)} kilometara`;
+        distanceText = `${km.toFixed(0)}km`;
     } else {
-        distanceText = `Udaljeno ${(km * 1000).toFixed(0)} metara`;
+        distanceText = `${(km * 1000).toFixed(0)}m`;
     }
 
     return (
@@ -56,7 +56,7 @@ const PostItem = (props) => {
                     <View style={styles.leftStatusContainer}>
                         <Feather
                             name="map"
-                            size={18}
+                            size={17}
                             color="white"
                         />
                         <MyText style={styles.statusText}>{distanceText}</MyText>
@@ -64,7 +64,7 @@ const PostItem = (props) => {
 
                     <View style={styles.rightStatusContainer}>
                         <Feather
-                            size={18}
+                            size={17}
                             name="clock"
                             color="white"
                         />

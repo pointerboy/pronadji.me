@@ -46,13 +46,11 @@ const styles = StyleSheet.create({
         color: "black",
         paddingTop: 4,
         fontSize: 16,
-        fontFamily: "kanit",
     },
     disableTitle: {
         color: colors.grey,
         paddingTop: 4,
         fontSize: 16,
-        fontFamily: "kanit",
     },
     disableContentText: {
         fontSize: 14,

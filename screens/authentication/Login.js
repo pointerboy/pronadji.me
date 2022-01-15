@@ -152,7 +152,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     switchToSignUpText: {
-        fontFamily: "kanit-bold",
         color: colors.grey,
         fontSize: 20,
     },

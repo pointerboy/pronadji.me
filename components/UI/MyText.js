@@ -15,7 +15,6 @@ const MyText = (props) => {
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: "kanit-light",
     },
 });
 
