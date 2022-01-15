@@ -1,10 +1,8 @@
 import React, {useState} from "react";
-import {KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View,} from "react-native";
+import {KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View, ImageBackground, Text} from "react-native";
 import {CardStyleInterpolators} from "@react-navigation/stack";
-import {Ionicons} from "@expo/vector-icons";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 import Constants from "expo-constants";
-import i18n from "i18n-js";
 
 import MyButton from "../../components/UI/MyButton";
 import MyText from "../../components/UI/MyText";
@@ -12,19 +10,10 @@ import MyTextInput from "../../components/UI/MyTextInput";
 import colors from "../../shared/colors";
 import AuthHeader from "../../components/auth/AuthHeader";
 import {changeLanguage, changeLanguageActionSheetOptions, showError,} from "../../shared/utils";
+import backgroundImage from "../../assets/images/kreiranje_naloga.jpg";
 
 const SignUpScreen = (props) => {
     const [nickname, setNickname] = useState("");
-
-    const {showActionSheetWithOptions} = useActionSheet();
-
-    const changeLanguageHandler = () => {
-        showActionSheetWithOptions(changeLanguageActionSheetOptions, (index) => {
-            if (index !== 2) {
-                changeLanguage(index);
-            }
-        });
-    };
 
     const signUpHandler = () => {
         if (nickname.trim() === "") {
@@ -40,18 +29,11 @@ const SignUpScreen = (props) => {
         props.navigation.replace("Login");
     };
 
-    return (
-        <View style={styles.screen}>
-            <TouchableOpacity
-                style={styles.languageChangeContainer}
-                onPress={changeLanguageHandler}
-            >
-                <Ionicons
-                    size={23}
-                    name={Platform.OS === "android" ? "md-globe" : "ios-globe"}
-                />
-            </TouchableOpacity>
+    const backgroundImage = require("../../assets/images/kreiranje_naloga.jpg");
 
+    return (
+
+        <View style={styles.screen}>
             <ScrollView
                 contentContainerStyle={styles.scrollView}
                 showsVerticalScrollIndicator={false}
@@ -60,16 +42,16 @@ const SignUpScreen = (props) => {
                     style={styles.contentContainer}
                     behavior={Platform.OS === "ios" ? "padding" : undefined}
                 >
+                    <ImageBackground source={backgroundImage} style={styles.accCreationHeader}/>
                     <AuthHeader
                         style={styles.centerContainer}
                         title="Lost & Found"
-                        subtitle={i18n.t("signUpScreen.subtitle")}
-                        image={require("../../assets/images/logo.png")}
+                        subtitle="Kreiranje naloga"
                     />
 
                     <View style={styles.textInputContainer}>
                         <MyTextInput
-                            placeholder="Smislite korisničko ime"
+                            placeholder="Unesite korisničko ime"
                             onChangeText={setNickname}
                             value={nickname}
                         />
@@ -81,14 +63,14 @@ const SignUpScreen = (props) => {
                     />
 
                     <View style={styles.centerContainer}>
-                        <MyText>{i18n.t("signUpScreen.hint")}</MyText>
+                        <MyText>Već imate nalog?</MyText>
 
                         <TouchableOpacity
                             onPress={switchToLoginHandler}
                             activeOpacity={0.6}
                         >
                             <MyText style={styles.switchToLoginText}>
-                                {i18n.t("signUpScreen.login")}
+                                Prijavite se
                             </MyText>
                         </TouchableOpacity>
                     </View>
@@ -110,6 +92,10 @@ const styles = StyleSheet.create({
         right: 20,
         top: Constants.statusBarHeight + 15,
     },
+    accCreationHeader:{
+        width:'100%',
+        height: 300
+    },
     scrollView: {
         flexGrow: 1,
     },
@@ -127,14 +113,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     switchToLoginText: {
-        fontFamily: "kanit-bold",
         color: colors.grey,
         fontSize: 20,
     },
 });
 
 export const screenOptions = {
-    title: i18n.t("signUpScreen.headerTitle"),
+    title: 'Korak do naloga!',
     headerShown: false,
     cardStyleInterpolator: CardStyleInterpolators.forNoAnimation,
 };
