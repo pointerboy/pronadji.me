@@ -1,21 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    Platform,
-    TouchableOpacity,
-    Image,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useSelector, useDispatch } from "react-redux";
-
-import CategoryList from "../../../components/app/main/CategoryList";
-import MyText from "../../../components/UI/MyText";
-import PostList from "../../../components/app/main/PostList";
+import React from "react";
+import {StyleSheet, Text, View,} from "react-native";
 import colors from "../../../shared/colors";
-import { fetchAllPosts } from "../../../store/actions/posts";
-import { showError } from "../../../shared/utils";
 
 const InfoScreen = (props) => {
     return (

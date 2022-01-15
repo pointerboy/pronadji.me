@@ -1,18 +1,8 @@
-import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
-import { CardStyleInterpolators } from "@react-navigation/stack";
-import { Ionicons } from "@expo/vector-icons";
-import {
-  useActionSheet,
-  connectActionSheet,
-} from "@expo/react-native-action-sheet";
+import React, {useState} from "react";
+import {KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View,} from "react-native";
+import {CardStyleInterpolators} from "@react-navigation/stack";
+import {Ionicons} from "@expo/vector-icons";
+import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 import Constants from "expo-constants";
 import i18n from "i18n-js";
 
@@ -21,136 +11,132 @@ import MyText from "../../components/UI/MyText";
 import MyTextInput from "../../components/UI/MyTextInput";
 import colors from "../../shared/colors";
 import AuthHeader from "../../components/auth/AuthHeader";
-import {
-  showError,
-  changeLanguageActionSheetOptions,
-  changeLanguage,
-} from "../../shared/utils";
+import {changeLanguage, changeLanguageActionSheetOptions, showError,} from "../../shared/utils";
 
 const SignUpScreen = (props) => {
-  const [nickname, setNickname] = useState("");
+    const [nickname, setNickname] = useState("");
 
-  const { showActionSheetWithOptions } = useActionSheet();
+    const {showActionSheetWithOptions} = useActionSheet();
 
-  const changeLanguageHandler = () => {
-    showActionSheetWithOptions(changeLanguageActionSheetOptions, (index) => {
-      if (index !== 2) {
-        changeLanguage(index);
-      }
-    });
-  };
+    const changeLanguageHandler = () => {
+        showActionSheetWithOptions(changeLanguageActionSheetOptions, (index) => {
+            if (index !== 2) {
+                changeLanguage(index);
+            }
+        });
+    };
 
-  const signUpHandler = () => {
-    if (nickname.trim() === "") {
-      showError("Morate uneti korisničko ime!");
-    } else {
-      props.navigation.navigate("NextSignUp", {
-        nickname: nickname.trim(),
-      });
-    }
-  };
+    const signUpHandler = () => {
+        if (nickname.trim() === "") {
+            showError("Morate uneti korisničko ime!");
+        } else {
+            props.navigation.navigate("NextSignUp", {
+                nickname: nickname.trim(),
+            });
+        }
+    };
 
-  const switchToLoginHandler = () => {
-    props.navigation.replace("Login");
-  };
+    const switchToLoginHandler = () => {
+        props.navigation.replace("Login");
+    };
 
-  return (
-    <View style={styles.screen}>
-      <TouchableOpacity
-        style={styles.languageChangeContainer}
-        onPress={changeLanguageHandler}
-      >
-        <Ionicons
-          size={23}
-          name={Platform.OS === "android" ? "md-globe" : "ios-globe"}
-        />
-      </TouchableOpacity>
-
-      <ScrollView
-        contentContainerStyle={styles.scrollView}
-        showsVerticalScrollIndicator={false}
-      >
-        <KeyboardAvoidingView
-          style={styles.contentContainer}
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
-        >
-          <AuthHeader
-            style={styles.centerContainer}
-            title="Lost & Found"
-            subtitle={i18n.t("signUpScreen.subtitle")}
-            image={require("../../assets/images/logo.png")}
-          />
-
-          <View style={styles.textInputContainer}>
-            <MyTextInput
-              placeholder="Smislite korisničko ime"
-              onChangeText={setNickname}
-              value={nickname}
-            />
-          </View>
-
-          <MyButton
-            title="Dalje"
-            onPress={signUpHandler}
-          />
-
-          <View style={styles.centerContainer}>
-            <MyText>{i18n.t("signUpScreen.hint")}</MyText>
-
+    return (
+        <View style={styles.screen}>
             <TouchableOpacity
-              onPress={switchToLoginHandler}
-              activeOpacity={0.6}
+                style={styles.languageChangeContainer}
+                onPress={changeLanguageHandler}
             >
-              <MyText style={styles.switchToLoginText}>
-                {i18n.t("signUpScreen.login")}
-              </MyText>
+                <Ionicons
+                    size={23}
+                    name={Platform.OS === "android" ? "md-globe" : "ios-globe"}
+                />
             </TouchableOpacity>
-          </View>
-        </KeyboardAvoidingView>
-      </ScrollView>
-    </View>
-  );
+
+            <ScrollView
+                contentContainerStyle={styles.scrollView}
+                showsVerticalScrollIndicator={false}
+            >
+                <KeyboardAvoidingView
+                    style={styles.contentContainer}
+                    behavior={Platform.OS === "ios" ? "padding" : undefined}
+                >
+                    <AuthHeader
+                        style={styles.centerContainer}
+                        title="Lost & Found"
+                        subtitle={i18n.t("signUpScreen.subtitle")}
+                        image={require("../../assets/images/logo.png")}
+                    />
+
+                    <View style={styles.textInputContainer}>
+                        <MyTextInput
+                            placeholder="Smislite korisničko ime"
+                            onChangeText={setNickname}
+                            value={nickname}
+                        />
+                    </View>
+
+                    <MyButton
+                        title="Dalje"
+                        onPress={signUpHandler}
+                    />
+
+                    <View style={styles.centerContainer}>
+                        <MyText>{i18n.t("signUpScreen.hint")}</MyText>
+
+                        <TouchableOpacity
+                            onPress={switchToLoginHandler}
+                            activeOpacity={0.6}
+                        >
+                            <MyText style={styles.switchToLoginText}>
+                                {i18n.t("signUpScreen.login")}
+                            </MyText>
+                        </TouchableOpacity>
+                    </View>
+                </KeyboardAvoidingView>
+            </ScrollView>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    paddingTop: Constants.statusBarHeight,
-    paddingHorizontal: 35,
-    backgroundColor: "white",
-  },
-  languageChangeContainer: {
-    position: "absolute",
-    right: 20,
-    top: Constants.statusBarHeight + 15,
-  },
-  scrollView: {
-    flexGrow: 1,
-  },
-  contentContainer: {
-    flex: 1,
-    justifyContent: "space-between",
-  },
-  textInputContainer: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  centerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  switchToLoginText: {
-    fontFamily: "kanit-bold",
-    color: colors.grey,
-    fontSize: 20,
-  },
+    screen: {
+        flex: 1,
+        paddingTop: Constants.statusBarHeight,
+        paddingHorizontal: 35,
+        backgroundColor: "white",
+    },
+    languageChangeContainer: {
+        position: "absolute",
+        right: 20,
+        top: Constants.statusBarHeight + 15,
+    },
+    scrollView: {
+        flexGrow: 1,
+    },
+    contentContainer: {
+        flex: 1,
+        justifyContent: "space-between",
+    },
+    textInputContainer: {
+        flex: 1,
+        justifyContent: "center",
+    },
+    centerContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    switchToLoginText: {
+        fontFamily: "kanit-bold",
+        color: colors.grey,
+        fontSize: 20,
+    },
 });
 
 export const screenOptions = {
-  title: i18n.t("signUpScreen.headerTitle"),
-  headerShown: false,
-  cardStyleInterpolator: CardStyleInterpolators.forNoAnimation,
+    title: i18n.t("signUpScreen.headerTitle"),
+    headerShown: false,
+    cardStyleInterpolator: CardStyleInterpolators.forNoAnimation,
 };
 
 export default connectActionSheet(SignUpScreen);

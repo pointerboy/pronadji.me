@@ -1,11 +1,8 @@
 import React from "react";
-import { Platform } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import {Feather, Ionicons} from "@expo/vector-icons";
+import {createStackNavigator} from "@react-navigation/stack";
+import {Feather} from "@expo/vector-icons";
 
-import InfoScreen, {
-    screenOptions as infoScreenOptions,
-} from "../../../screens/app/main/InfoScreen";
+import InfoScreen, {screenOptions as infoScreenOptions,} from "../../../screens/app/main/InfoScreen";
 
 const Stack = createStackNavigator();
 
@@ -23,7 +20,7 @@ const InfoNavigator = (props) => {
 
 export const navigatorOptions = {
     title: 'Info',
-    tabBarIcon: ({ color }) => (
+    tabBarIcon: ({color}) => (
         <Feather
             name="book"
             size={25}
