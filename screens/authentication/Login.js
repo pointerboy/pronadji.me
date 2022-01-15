@@ -4,7 +4,6 @@ import {CardStyleInterpolators} from "@react-navigation/stack";
 import {useDispatch} from "react-redux";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 import Constants from "expo-constants";
-import i18n from "i18n-js";
 
 import MyButton from "../../components/UI/MyButton";
 import MyText from "../../components/UI/MyText";
@@ -23,33 +22,18 @@ const LoginScreen = (props) => {
 
     const passwordRef = useRef(null);
 
-    const {showActionSheetWithOptions} = useActionSheet();
-
     const loginHandler = async (method) => {
         setIsLoading(true);
         if (method === "email") {
             try {
                 await dispatch(login(email.trim(), password));
                 showSuccess(
-                    i18n.t("loginScreen.loginSuccess"),
-                    i18n.t("loginScreen.successMsg")
+                    'Uspešna prijava!',
+                    'Dobro došli nazad!'
                 );
             } catch (error) {
                 showError(error.message);
                 setIsLoading(false);
-            }
-        } else if (method === "facebook") {
-            try {
-                await dispatch(loginWithFacebook());
-                showSuccess(
-                    i18n.t("loginScreen.loginSuccess"),
-                    i18n.t("loginScreen.loginSuccess")
-                );
-            } catch (error) {
-                setIsLoading(false);
-                if (error.message !== "") {
-                    showError(error.message);
-                }
             }
         }
     };
@@ -131,6 +115,10 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: "row",
+    },
+    accCreationHeader:{
+        width:'100%',
+        height: 300
     },
     normalLoginButton: {
         flex: 1,

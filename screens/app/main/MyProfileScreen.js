@@ -59,7 +59,7 @@ const MyProfileScreen = (props) => {
                     style={styles.background}
                     resizeMode={'cover'}/>
                 <Image
-                    style={[styles.profilepic, {borderRadius: 2}]}
+                    style={[styles.profilepic, {borderRadius: 7}]}
                     resizeMode={'cover'}
                     source={{uri: user.imageUrl}}
                 />
