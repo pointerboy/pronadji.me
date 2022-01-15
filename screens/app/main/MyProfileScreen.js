@@ -6,8 +6,9 @@ import {useIsFocused} from "@react-navigation/native";
 import PostList from "../../../components/app/main/PostList";
 import {fetchMyPosts} from "../../../store/actions/posts";
 import CText from "../../../components/UI/MyText";
-import CategoryList from "../../../components/app/main/CategoryList";
 import {showError} from "../../../shared/utils";
+import colors from "../../../shared/colors";
+import {Feather} from "@expo/vector-icons";
 
 const MyProfileScreen = (props) => {
     const dispatch = useDispatch();
@@ -50,50 +51,36 @@ const MyProfileScreen = (props) => {
         );
     }, [selectedCategories, myPosts]);
 
-    const header = (
-        <View>
-            <View style={styles.userContainer}>
-                <Image
-                    style={styles.userImage}
-                    source={
-                        user.imageUrl
-                            ? {
-                                uri: user.imageUrl,
-                            }
-                            : null
-                    }
-                />
-                <View style={styles.userInfoContainer}>
-                    <CText style={styles.nickname} numberOfLines={1}>
-                        {user.nickname}
-                    </CText>
-                    <CText style={styles.email}>{user.email}</CText>
-                    <CText style={styles.email}>{user.phoneNumber}</CText>
-                </View>
-            </View>
 
-            <View style={{marginTop: 25}}>
-                <CategoryList
-                    inputMode
-                    many
-                    value={selectedCategories}
-                    onChange={setSelectedCategories}
+    return (
+        <View style={styles.screen}>
+            <View style={styles.accountView}>
+                <View
+                    style={styles.background}
+                    resizeMode={'cover'}/>
+                <Image
+                    style={[styles.profilepic, {borderRadius: 2}]}
+                    resizeMode={'cover'}
+                    source={{uri: user.imageUrl}}
                 />
+                <CText style={styles.title}>{user.nickname}</CText>
+
+                <CText style={styles.title}>
+                    <Feather name={"mail"} size={20}/> {user.email}
+                </CText>
+
+                <CText style={styles.title}>
+                    <Feather name={"phone"} size={20}/> {user.phoneNumber}
+                </CText>
+
             </View>
 
             <View style={styles.titleContainer}>
                 <CText style={styles.title}>Vaše objave</CText>
             </View>
-
-        </View>
-    );
-
-    return (
-        <View style={styles.screen}>
             <PostList
                 data={showPosts}
                 navigation={props.navigation}
-                header={header}
                 onRefresh={onRefresh}
                 refreshing={isRefreshing}
             />
@@ -102,6 +89,19 @@ const MyProfileScreen = (props) => {
 };
 
 const styles = StyleSheet.create({
+    background: {
+        width: '150%',
+        height: 150,
+        backgroundColor: colors.postLightBlue
+    },
+    profilepic: {
+        width: 100,
+        height: 100,
+        marginTop: -50,
+    },
+    accountView: {
+        alignItems: 'center',
+    },
     screen: {
         flex: 1,
         paddingHorizontal: 15,
