@@ -12,6 +12,7 @@ import i18n from "i18n-js";
 import MyText from "../../../components/UI/MyText";
 import colors from "../../../shared/colors";
 import CategoryList from "../../../components/app/main/CategoryList";
+import {Feather} from "@expo/vector-icons";
 
 const PostDetailScreen = (props) => {
   const {
@@ -20,7 +21,7 @@ const PostDetailScreen = (props) => {
     mapUrl,
     location,
     categoryId,
-    address,
+    distance,
   } = props.route.params;
 
   const pressLocationHandler = () => {
@@ -33,11 +34,14 @@ const PostDetailScreen = (props) => {
     });
   };
 
+  let distanceText;
+  distanceText = `${(distance * 1000).toFixed(0)}m`;
+
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.titleContainer}>
         <MyText style={styles.title}>
-          {i18n.t("postDetailScreen.header1")}
+          Kategorija
         </MyText>
       </View>
 
@@ -45,7 +49,7 @@ const PostDetailScreen = (props) => {
 
       <View style={styles.titleContainer}>
         <MyText style={styles.title}>
-          {i18n.t("postDetailScreen.header2")}
+          Priložena fotografija
         </MyText>
       </View>
 
@@ -53,9 +57,16 @@ const PostDetailScreen = (props) => {
         <Image style={styles.image} source={{ uri: imageUrl }} />
       </View>
 
+      <View style={styles.distanceContainer}>
+        <Feather size={30} name={"navigation"}/>
+        <MyText style={styles.title}>
+          {distanceText}
+        </MyText>
+      </View>
+
       <View style={styles.titleContainer}>
         <MyText style={styles.title}>
-          {i18n.t("postDetailScreen.header3")}
+          Opis
         </MyText>
       </View>
 
@@ -65,7 +76,7 @@ const PostDetailScreen = (props) => {
 
       <View style={styles.titleContainer}>
         <MyText style={styles.title}>
-          {i18n.t("postDetailScreen.header4")}
+          Lokacija
         </MyText>
       </View>
 
@@ -76,10 +87,6 @@ const PostDetailScreen = (props) => {
       >
         <Image style={styles.image} source={{ uri: mapUrl }} />
       </TouchableOpacity>
-
-      <View style={styles.addressContainer}>
-        <MyText style={styles.text}>{address}</MyText>
-      </View>
     </ScrollView>
   );
 };
@@ -102,6 +109,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.lightGrey,
   },
+  distanceContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 10,
+    marginTop: 5,
+    height: 90,
+    borderRadius: 10,
+    backgroundColor: colors.postLightBlue,
+  },
   addressContainer: {
     paddingTop: 25,
     paddingHorizontal: 10,
@@ -113,7 +129,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   title: {
-    fontFamily: "kanit",
     fontSize: 19,
   },
   text: {
@@ -126,7 +141,6 @@ export const screenOptions = (navData) => {
   return {
     headerTitle: title,
     headerTitleStyle: {
-      fontFamily: "kanit-light",
     },
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
   };

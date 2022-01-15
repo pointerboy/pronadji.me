@@ -14,6 +14,7 @@ import MyPostsNavigator, {
 import InfoNavigator, {
   navigatorOptions as infoNavigatorOptions,
 } from "./InfoNavigator"
+import {Feather} from "@expo/vector-icons";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -30,7 +31,6 @@ const tabBarOptions = {
   },
   labelStyle: {
     fontSize: 11,
-    fontFamily: "kanit-light",
   },
   indicatorStyle: {
     backgroundColor: "transparent",
@@ -60,11 +60,8 @@ const TabNavigator = (props) => {
 };
 
 export const navigatorOptions = (navData) => {
-  return {
-    headerTitle: 'Početna strana',
-    headerTitleStyle: {
-      fontFamily: "kanit-light",
-    },
+  return {headerMode: 'none',
+    // razlog zbog čega je maknut options jeste zbog toga sto se navigator duplira
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
@@ -78,13 +75,14 @@ export const navigatorOptions = (navData) => {
     ),
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item
-          iconName="md-add"
-          color="black"
-          onPress={() => {
-            navData.navigation.navigate("CreatePost");
-          }}
-        />
+          <Feather
+              name="square-plus"
+              size={25}
+              color="#222222"
+              onPress={() => {
+                  navData.navigation.navigate("CreatePost");
+              }}
+          />
       </HeaderButtons>
     ),
   };

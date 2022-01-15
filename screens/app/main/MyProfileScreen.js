@@ -6,7 +6,7 @@ import i18n from "i18n-js";
 
 import PostList from "../../../components/app/main/PostList";
 import { fetchMyPosts } from "../../../store/actions/posts";
-import MyText from "../../../components/UI/MyText";
+import CText from "../../../components/UI/MyText";
 import CategoryList from "../../../components/app/main/CategoryList";
 import { showError } from "../../../shared/utils";
 
@@ -65,11 +65,11 @@ const MyProfileScreen = (props) => {
             }
         />
         <View style={styles.userInfoContainer}>
-          <MyText style={styles.nickname} numberOfLines={1}>
+          <CText style={styles.nickname} numberOfLines={1}>
             {user.nickname}
-          </MyText>
-          <MyText style={styles.email}>{user.email}</MyText>
-          <MyText style={styles.email}>{user.phoneNumber}</MyText>
+          </CText>
+          <CText style={styles.email}>{user.email}</CText>
+          <CText style={styles.email}>{user.phoneNumber}</CText>
         </View>
       </View>
 
@@ -83,7 +83,7 @@ const MyProfileScreen = (props) => {
       </View>
 
       <View style={styles.titleContainer}>
-        <MyText style={styles.title}>{i18n.t("myPostsScreen.subtitle")}</MyText>
+        <CText style={styles.title}>Vaše objave</CText>
       </View>
 
     </View>
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   title: {
-    fontFamily: "kanit",
     fontSize: 19,
   },
   userContainer: {

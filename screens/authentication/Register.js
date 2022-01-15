@@ -42,7 +42,7 @@ const SignUpScreen = (props) => {
 
   const signUpHandler = () => {
     if (nickname.trim() === "") {
-      showError(i18n.t("signUpScreen.pleaseEnterYourNickname"));
+      showError("Morate uneti korisničko ime!");
     } else {
       props.navigation.navigate("NextSignUp", {
         nickname: nickname.trim(),
@@ -83,14 +83,14 @@ const SignUpScreen = (props) => {
 
           <View style={styles.textInputContainer}>
             <MyTextInput
-              placeholder={i18n.t("signUpScreen.placeHolderNickname")}
+              placeholder="Smislite korisničko ime"
               onChangeText={setNickname}
               value={nickname}
             />
           </View>
 
           <MyButton
-            title={i18n.t("signUpScreen.nextButton")}
+            title="Dalje"
             onPress={signUpHandler}
           />
 

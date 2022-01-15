@@ -7,9 +7,8 @@ import {
   TouchableOpacity,
   Platform,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons"
 import i18n from "i18n-js";
-
 import MyText from "../../UI/MyText";
 
 const PostItem = (props) => {
@@ -36,9 +35,9 @@ const PostItem = (props) => {
   const km = props.distance;
   let distanceText;
   if (km >= 1) {
-    distanceText = `${km.toFixed(0)} ${i18n.t("postItem.km")}`;
+    distanceText = `Udaljeno ${km.toFixed(0)} kilometara`;
   } else {
-    distanceText = `${(km * 1000).toFixed(0)} ${i18n.t("postItem.m")}`;
+    distanceText = `Udaljeno ${(km * 1000).toFixed(0)} metara`;
   }
 
   return (
@@ -61,19 +60,19 @@ const PostItem = (props) => {
 
         <View style={styles.cardStatus}>
           <View style={styles.leftStatusContainer}>
-            <Ionicons
-              size={15}
-              color="white"
-              name={Platform.OS === "android" ? "md-locate" : "ios-locate"}
-            />
+           <Feather
+               name="map"
+               size={18}
+               color="white"
+           />
             <MyText style={styles.statusText}>{distanceText}</MyText>
           </View>
 
           <View style={styles.rightStatusContainer}>
-            <Ionicons
-              size={15}
+            <Feather
+              size={18}
+              name="clock"
               color="white"
-              name={Platform.OS === "android" ? "md-time" : "ios-time"}
             />
             <MyText style={styles.statusText}>{countdownText}</MyText>
           </View>
@@ -121,7 +120,6 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "white",
-    fontFamily: "kanit-light",
     fontSize: 17,
     paddingVertical: 5,
   },

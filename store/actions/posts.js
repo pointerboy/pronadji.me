@@ -198,7 +198,7 @@ export const createPost = (
         expirationDate,
         uid,
         distance,
-        selectedLocation.toString()
+        selectedLocation
       ),
     });
   };

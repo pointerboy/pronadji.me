@@ -4,4 +4,6 @@ export default {
   lightGrey: "#E2E2E2",
   success: "#2ecc71",
   error: "#e74c3c",
+
+  postLightBlue: '#90cbf5'
 };

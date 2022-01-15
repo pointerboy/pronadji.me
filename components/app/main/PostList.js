@@ -1,6 +1,5 @@
 import React from "react";
 import { FlatList, StyleSheet, View, Platform } from "react-native";
-import i18n from "i18n-js";
 
 import PostItem from "./PostItem";
 import MyText from "../../UI/MyText";
@@ -17,7 +16,7 @@ const PostList = (props) => {
         color="black"
         size={80}
       />
-      <MyText style={styles.text}>{i18n.t("postList.emptyText")}</MyText>
+      <MyText style={styles.text}>Nema skorašnjih objava</MyText>
     </View>
   );
 
@@ -40,6 +39,7 @@ const PostList = (props) => {
             lng: itemData.item.lng,
           },
           address: itemData.item.address,
+          distance: itemData.item.distance
         });
       }}
     />

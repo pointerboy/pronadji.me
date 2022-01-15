@@ -151,7 +151,7 @@ const NextSignUpScreen = (props) => {
               ref={confirmPasswordRef}
             />
             <MyTextInput
-                placeholder="Broj elefona"
+                placeholder="Broj telefona"
                 value={phoneNumber}
                 onChangeText={setPhoneNumber}
                 keyboardType='numeric'
@@ -161,7 +161,7 @@ const NextSignUpScreen = (props) => {
 
           <View style={styles.buttonContainer}>
             <MyButton
-              title={i18n.t("nextSignUpScreen.signUp")}
+              title={"Napravi nalog"}
               onPress={signUpHandler}
             />
           </View>

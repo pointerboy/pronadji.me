@@ -20,9 +20,6 @@ import { logout } from "../../store/actions/user";
 const Drawer = createDrawerNavigator();
 
 const drawerContentOptions = {
-  labelStyle: {
-    fontFamily: "kanit-light",
-  },
 };
 
 const DrawerContent = (props) => {
@@ -95,12 +92,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25,
-    fontFamily: "kanit-light",
     paddingVertical: 20,
     paddingLeft: 10,
   },
   label: {
-    fontFamily: "kanit-light",
   },
 });
 

@@ -26,8 +26,6 @@ import { login, loginWithFacebook } from "../../store/actions/user";
 import {
   showSuccess,
   showError,
-  changeLanguageActionSheetOptions,
-  changeLanguage,
 } from "../../shared/utils";
 import Loader from "../../components/UI/Loader";
 
@@ -40,14 +38,6 @@ const LoginScreen = (props) => {
   const passwordRef = useRef(null);
 
   const { showActionSheetWithOptions } = useActionSheet();
-
-  const changeLanguageHandler = () => {
-    showActionSheetWithOptions(changeLanguageActionSheetOptions, (index) => {
-      if (index !== 2) {
-        changeLanguage(index);
-      }
-    });
-  };
 
   const loginHandler = async (method) => {
     setIsLoading(true);
@@ -84,16 +74,6 @@ const LoginScreen = (props) => {
 
   return (
     <View style={styles.screen}>
-      <TouchableOpacity
-        style={styles.languageChangeContainer}
-        onPress={changeLanguageHandler}
-      >
-        <Ionicons
-          size={23}
-          name={Platform.OS === "android" ? "md-globe" : "ios-globe"}
-        />
-      </TouchableOpacity>
-
       <ScrollView
         contentContainerStyle={styles.scrollView}
         showsVerticalScrollIndicator={false}
@@ -106,14 +86,13 @@ const LoginScreen = (props) => {
 
           <AuthHeader
             style={styles.centerContainer}
-            title="Lost & Found"
-            subtitle={i18n.t("loginScreen.subtitle")}
+            title="Lost&Found"
             image={require("../../assets/images/logo.png")}
           />
 
           <View style={styles.textInputContainer}>
             <MyTextInput
-              placeholder={i18n.t("loginScreen.placeHolderEmail")}
+              placeholder="Email adresa"
               onChangeText={setEmail}
               value={email}
               autoCapitalize="none"
@@ -123,7 +102,7 @@ const LoginScreen = (props) => {
               blurOnSubmit={false}
             />
             <MyTextInput
-              placeholder={i18n.t("loginScreen.placeHolderPass")}
+              placeholder="Lozinka"
               secureTextEntry={true}
               onChangeText={setPassword}
               value={password}
@@ -134,30 +113,20 @@ const LoginScreen = (props) => {
           <View style={styles.buttonContainer}>
             <View style={styles.normalLoginButton}>
               <MyButton
-                title={i18n.t("loginScreen.subtitle")}
+                title="Prijava"
                 onPress={() => loginHandler("email")}
               />
             </View>
-
-            {Platform.OS !== "ios" && (
-              <TouchableOpacity
-                style={styles.facebookLoginButton}
-                activeOpacity={0.6}
-                onPress={() => loginHandler("facebook")}
-              >
-                <Ionicons name="logo-facebook" size={45} color="#4267B2" />
-              </TouchableOpacity>
-            )}
           </View>
 
           <View style={styles.centerContainer}>
-            <MyText>{i18n.t("loginScreen.hint")}</MyText>
+            <MyText>Nema nalog?</MyText>
             <TouchableOpacity
               onPress={switchToSignUpHandler}
               activeOpacity={0.6}
             >
               <MyText style={styles.switchToSignUpText}>
-                {i18n.t("loginScreen.signUp")}
+                Kreirajte ga odmah
               </MyText>
             </TouchableOpacity>
           </View>
@@ -174,24 +143,11 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     backgroundColor: "white",
   },
-  languageChangeContainer: {
-    position: "absolute",
-    right: 20,
-    top: Constants.statusBarHeight + 15,
-  },
   buttonContainer: {
     flexDirection: "row",
   },
   normalLoginButton: {
     flex: 1,
-  },
-  facebookLoginButton: {
-    flex: 0.4,
-    marginLeft: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    borderRadius: 10,
   },
   scrollView: {
     flexGrow: 1,

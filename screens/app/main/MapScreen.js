@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     elevation: 3,
-    // IOS
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 5,
@@ -140,10 +139,7 @@ const styles = StyleSheet.create({
 });
 
 export const screenOptions = {
-  headerTitle: i18n.t("mapScreen.headerTitle"),
-  headerTitleStyle: {
-    fontFamily: "kanit-light",
-  },
+  headerTitle: 'Mapa',
 };
 
 export default MapScreen;

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, StyleSheet, Platform } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import {Feather} from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 
 import MyText from "../../UI/MyText";
@@ -35,15 +35,11 @@ const CategoryList = (props) => {
         >
           <View style={{ ...styles.rectangle, backgroundColor: color }}>
             {(many ? value.includes(id) : value === id) && (
-              <Ionicons
-                name={
-                  Platform.OS === "android"
-                    ? "md-checkmark-circle"
-                    : "ios-checkmark-circle"
-                }
-                size={23}
-                color="white"
-              />
+                <Feather
+                    name="check-circle"
+                    size={21}
+                    color="#ffffff"
+                />
             )}
           </View>
           <MyText style={styles.text}>{title}</MyText>
@@ -54,15 +50,11 @@ const CategoryList = (props) => {
         <View style={styles.categoryContainer} key={title}>
           <View style={{ ...styles.rectangle, backgroundColor: color }}>
             {id === categoryId && (
-              <Ionicons
-                name={
-                  Platform.OS === "android"
-                    ? "md-checkmark-circle"
-                    : "ios-checkmark-circle"
-                }
-                size={23}
-                color="white"
-              />
+                <Feather
+                    name="check-circle"
+                    size={21}
+                    color="#ffffff"
+                />
             )}
           </View>
           <MyText style={styles.text}>{title}</MyText>

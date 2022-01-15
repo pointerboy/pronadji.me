@@ -1,7 +1,7 @@
 import React from "react";
 import { Platform } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Ionicons } from "@expo/vector-icons";
+import {Feather, Ionicons} from "@expo/vector-icons";
 import i18n from "i18n-js";
 
 import MyProfileScreen, {
@@ -25,11 +25,11 @@ const MyPostsNavigator = (props) => {
 export const navigatorOptions = {
   title: 'Profil',
   tabBarIcon: ({ color }) => (
-    <Ionicons
-      name={Platform.OS === "android" ? "md-bookmark" : "ios-bookmark"}
-      size={25}
-      color={color}
-    />
+      <Feather
+          name="user"
+          size={25}
+          color="#222222"
+      />
   ),
 };
 

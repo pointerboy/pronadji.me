@@ -1,11 +1,14 @@
 import React from "react";
 import { Platform } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Ionicons } from "@expo/vector-icons";
+
+import { Feather } from '@expo/vector-icons';
 
 import HomeScreen, {
   screenOptions as homeScreenOptions,
 } from "../../../screens/app/main/HomeScreen";
+import {HeaderButtons, Item} from "react-navigation-header-buttons";
+import HeaderButton from "../../../components/UI/HeaderButton";
 
 const Stack = createStackNavigator();
 
@@ -24,11 +27,11 @@ const HomeNavigator = (props) => {
 export const navigatorOptions = {
   title: 'Početna strana',
   tabBarIcon: ({ color }) => (
-    <Ionicons
-      name={Platform.OS === "android" ? "md-home" : "ios-home"}
-      size={25}
-      color={color}
-    />
+      <Feather
+          name="home"
+          size={25}
+          color="#222222"
+      />
   ),
 };
 

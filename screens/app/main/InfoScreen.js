@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     title: {
-        fontFamily: "kanit",
         fontSize: 19,
     },
     nickname: {
