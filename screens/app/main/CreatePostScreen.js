@@ -143,13 +143,13 @@ const CreatePostScreen = (props) => {
 
             <View style={{...styles.titleContainer, paddingTop: 25}}>
                 <CustomText style={styles.title}>
-                    {i18n.t("createPostScreen.header1")}
+                    Osnovne informacije
                 </CustomText>
             </View>
 
             <View style={styles.textInputContainer}>
                 <CustomTextInput
-                    placeholder={i18n.t("createPostScreen.title")}
+                    placeholder="Naziv predmeta"
                     value={title}
                     onChangeText={setTitle}
                     blurOnSubmit={false}
@@ -157,7 +157,7 @@ const CreatePostScreen = (props) => {
                     onSubmitEditing={() => descriptionRef.current.focus()}
                 />
                 <CustomTextInput
-                    placeholder={i18n.t("createPostScreen.description")}
+                    placeholder="Opis predmeta"
                     value={description}
                     onChangeText={setDescription}
                     ref={descriptionRef}
@@ -168,7 +168,7 @@ const CreatePostScreen = (props) => {
 
             <View style={styles.titleContainer}>
                 <CustomText style={styles.title}>
-                    {i18n.t("createPostScreen.header2")}
+                    Fotografija
                 </CustomText>
             </View>
 
@@ -187,7 +187,7 @@ const CreatePostScreen = (props) => {
                             color="black"
                         />
                         <CustomText style={styles.imageText}>
-                            {i18n.t("createPostScreen.imgHolder")}
+                            Kliknite da dodate fotografiju
                         </CustomText>
                     </View>
                 )}
@@ -195,7 +195,7 @@ const CreatePostScreen = (props) => {
 
             <View style={styles.titleContainer}>
                 <CustomText style={styles.title}>
-                    {i18n.t("createPostScreen.header3")}
+                    Lokacija
                 </CustomText>
             </View>
 
