@@ -4,27 +4,15 @@ import {Image, StyleSheet, TouchableOpacity, View,} from "react-native";
 import {Feather} from "@expo/vector-icons"
 import i18n from "i18n-js";
 import CustomText from "../../UI/CustomText";
+import moment from "moment";
+import "moment/locale/sr.js";
 
 const PostItem = (props) => {
     const categories = useSelector((state) => state.categories.categories);
 
-    const dateDiff = props.expirationDate.getTime() - new Date();
-
     const bgColor = categories.find(
         (category) => category.id === props.categoryId
     ).color;
-
-    const totalMinutes = dateDiff / 1000 / 60;
-
-    const day = Math.floor(totalMinutes / 60 / 24);
-    const hours = Math.floor((totalMinutes / 60) % 24);
-    const minutes = Math.floor(totalMinutes % 60);
-
-    const countdownText = `${
-        day !== 0 ? day + i18n.t("postItem.day") + " " : ""
-    }${hours !== 0 ? hours + i18n.t("postItem.hour") : ""}${
-        hours === 0 ? minutes + i18n.t("postItem.minute") : ""
-    }`;
 
     const km = props.distance;
     let distanceText;
@@ -33,6 +21,9 @@ const PostItem = (props) => {
     } else {
         distanceText = `${(km * 1000).toFixed(0)}m`;
     }
+
+    moment.locale('sr');
+    const date = moment(props.expirationDate).calendar();
 
     return (
         <TouchableOpacity
@@ -68,7 +59,7 @@ const PostItem = (props) => {
                             name="clock"
                             color="white"
                         />
-                        <CustomText style={styles.statusText}>{countdownText}</CustomText>
+                        <CustomText style={styles.statusText}>{date}</CustomText>
                     </View>
                 </View>
             </View>

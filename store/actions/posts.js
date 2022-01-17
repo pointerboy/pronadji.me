@@ -29,10 +29,7 @@ export const fetchAllPosts = (currentLocation, radius) => {
             const id = post.id;
             const data = post.data();
 
-            const expirationDate = new Date(data.expirationDate);
-
-            const dateDiff = expirationDate.getTime() - new Date();
-            if (dateDiff > 0) {
+            const date = new Date(data.expirationDate);
                 posts.push(
                     new Post(
                         id,
@@ -43,13 +40,12 @@ export const fetchAllPosts = (currentLocation, radius) => {
                         data.mapUrl,
                         data.coordinates.latitude,
                         data.coordinates.longitude,
-                        expirationDate,
+                        date,
                         data.uid,
                         post.distance,
                         data.address
                     )
                 );
-            }
         });
 
         dispatch({
@@ -76,16 +72,11 @@ export const fetchMyPosts = (currentLocation) => {
             const id = post.id;
             const data = post.data();
 
-            const expirationDate = new Date(data.expirationDate);
-
-            const dateDiff = expirationDate.getTime() - new Date();
-
             const distance = geokit.distance(currentLocation, {
                 lat: data.coordinates.latitude,
                 lng: data.coordinates.longitude,
             });
 
-            if (dateDiff > 0) {
                 myPosts.push(
                     new Post(
                         id,
@@ -102,7 +93,6 @@ export const fetchMyPosts = (currentLocation) => {
                         data.address
                     )
                 );
-            }
         });
 
         dispatch({

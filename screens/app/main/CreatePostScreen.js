@@ -102,7 +102,7 @@ const CreatePostScreen = (props) => {
                         categoryId,
                         selectedImage,
                         selectedLocation,
-                        new Date(Date.now() + 2 * 24 * 60 * 60 * 1000) // next 2 day
+                        new Date(Date.now())
                     )
                 );
                 showSuccess(i18n.t("createPostScreen.postCreated"), title);
