@@ -29,23 +29,23 @@ export const fetchAllPosts = (currentLocation, radius) => {
             const id = post.id;
             const data = post.data();
 
-            const date = new Date(data.expirationDate);
-                posts.push(
-                    new Post(
-                        id,
-                        data.title,
-                        data.description,
-                        data.categoryId,
-                        data.imageUrl,
-                        data.mapUrl,
-                        data.coordinates.latitude,
-                        data.coordinates.longitude,
-                        date,
-                        data.uid,
-                        post.distance,
-                        data.address
-                    )
-                );
+            const date = new Date(data.postDate);
+            posts.push(
+                new Post(
+                    id,
+                    data.title,
+                    data.description,
+                    data.categoryId,
+                    data.imageUrl,
+                    data.mapUrl,
+                    data.coordinates.latitude,
+                    data.coordinates.longitude,
+                    date,
+                    data.uid,
+                    post.distance,
+                    data.address
+                )
+            );
         });
 
         dispatch({
@@ -77,22 +77,22 @@ export const fetchMyPosts = (currentLocation) => {
                 lng: data.coordinates.longitude,
             });
 
-                myPosts.push(
-                    new Post(
-                        id,
-                        data.title,
-                        data.description,
-                        data.categoryId,
-                        data.imageUrl,
-                        data.mapUrl,
-                        data.coordinates.latitude,
-                        data.coordinates.longitude,
-                        new Date(data.expirationDate),
-                        data.uid,
-                        distance,
-                        data.address
-                    )
-                );
+            myPosts.push(
+                new Post(
+                    id,
+                    data.title,
+                    data.description,
+                    data.categoryId,
+                    data.imageUrl,
+                    data.mapUrl,
+                    data.coordinates.latitude,
+                    data.coordinates.longitude,
+                    new Date(data.postDate),
+                    data.uid,
+                    distance,
+                    data.address
+                )
+            );
         });
 
         dispatch({
@@ -108,7 +108,7 @@ export const createPost = (
     categoryId,
     selectedImage,
     selectedLocation,
-    expirationDate
+    postDate
 ) => {
     return async (dispatch, getState) => {
 
@@ -118,7 +118,7 @@ export const createPost = (
             "Cat:" + categoryId + '\n',
             "Image" + selectedImage + '\n',
             "Location" + selectedLocation + '\n',
-            "Date" + expirationDate + '\n');
+            "Date" + postDate + '\n');
 
         selectedLocation.address = 'proba_123';
 
@@ -136,7 +136,7 @@ export const createPost = (
                 selectedLocation.lng
             ),
             mapUrl: selectedLocation.mapUrl,
-            expirationDate: expirationDate.toISOString(),
+            postDate: postDate.toISOString(),
             uid,
             address: selectedLocation.address,
         });
@@ -169,7 +169,7 @@ export const createPost = (
             selectedLocation.mapUrl,
             selectedLocation.lat,
             selectedLocation.lng,
-            expirationDate,
+            postDate,
             uid,
             distance,
             selectedLocation.toString());
@@ -185,7 +185,7 @@ export const createPost = (
                 selectedLocation.mapUrl,
                 selectedLocation.lat,
                 selectedLocation.lng,
-                expirationDate,
+                postDate,
                 uid,
                 distance,
                 selectedLocation

@@ -8,7 +8,7 @@ class Post {
         mapUrl,
         lat,
         lng,
-        expirationDate,
+        postDate,
         uid,
         distance,
         address
@@ -21,7 +21,7 @@ class Post {
         this.mapUrl = mapUrl;
         this.lat = lat;
         this.lng = lng;
-        this.expirationDate = expirationDate;
+        this.postDate = postDate;
         this.uid = uid;
         this.distance = distance;
         this.address = address;

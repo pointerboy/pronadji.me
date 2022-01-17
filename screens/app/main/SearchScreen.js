@@ -80,9 +80,9 @@ const SearchScreen = (props) => {
             const id = post.id;
             const data = post.data();
 
-            const expirationDate = new Date(data.expirationDate);
+            const postDate = new Date(data.postDate);
 
-            const dateDiff = expirationDate.getTime() - new Date();
+            const dateDiff = postDate.getTime() - new Date();
             if (dateDiff > 0) {
                 result.push(
                     new Post(
@@ -94,7 +94,7 @@ const SearchScreen = (props) => {
                         data.mapUrl,
                         data.coordinates.latitude,
                         data.coordinates.longitude,
-                        expirationDate,
+                        postDate,
                         data.uid,
                         post.distance,
                         data.address

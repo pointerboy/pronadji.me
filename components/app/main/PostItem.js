@@ -2,7 +2,6 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {Image, StyleSheet, TouchableOpacity, View,} from "react-native";
 import {Feather} from "@expo/vector-icons"
-import i18n from "i18n-js";
 import CustomText from "../../UI/CustomText";
 import moment from "moment";
 import "moment/locale/sr.js";
@@ -23,7 +22,7 @@ const PostItem = (props) => {
     }
 
     moment.locale('sr');
-    const date = moment(props.expirationDate).calendar();
+    const date = moment(props.postDate).calendar();
 
     return (
         <TouchableOpacity

@@ -25,7 +25,7 @@ const PostList = (props) => {
             title={itemData.item.title}
             categoryId={itemData.item.categoryId}
             imageUrl={itemData.item.imageUrl}
-            expirationDate={itemData.item.expirationDate}
+            postDate={itemData.item.postDate}
             distance={itemData.item.distance}
             onPress={() => {
                 props.navigation.navigate("PostDetail", {
