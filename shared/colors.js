@@ -5,5 +5,6 @@ export default {
     success: "#2ecc71",
     error: "#e74c3c",
 
-    postLightBlue: '#90cbf5'
+    postLightBlue: '#90cbf5',
+    clockWhite: '#dadce0'
 };

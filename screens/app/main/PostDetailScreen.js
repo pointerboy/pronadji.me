@@ -6,6 +6,7 @@ import CustomText from "../../../components/UI/CustomText";
 import colors from "../../../shared/colors";
 import CategoryList from "../../../components/app/main/CategoryList";
 import {Feather} from "@expo/vector-icons";
+import moment from "moment";
 
 const PostDetailScreen = (props) => {
     const {
@@ -29,6 +30,9 @@ const PostDetailScreen = (props) => {
 
     let distanceText;
     distanceText = `${(distance * 1000).toFixed(0)}m`;
+
+    moment.locale('sr');
+    let postDate = moment(props.postDate).calendar();
 
     return (
         <ScrollView style={styles.screen}>
@@ -54,6 +58,13 @@ const PostDetailScreen = (props) => {
                 <Feather size={30} name={"navigation"}/>
                 <CustomText style={styles.title}>
                     {distanceText}
+                </CustomText>
+            </View>
+
+            <View style={styles.clockContainer}>
+                <Feather size={30} name={"clock"}/>
+                <CustomText style={styles.title}>
+                    {postDate}
                 </CustomText>
             </View>
 
@@ -110,6 +121,15 @@ const styles = StyleSheet.create({
         height: 90,
         borderRadius: 10,
         backgroundColor: colors.postLightBlue,
+    },
+    clockContainer: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginHorizontal: 10,
+        marginTop: 5,
+        height: 70,
+        borderRadius: 10,
+        backgroundColor: colors.clockWhite,
     },
     addressContainer: {
         paddingTop: 25,
