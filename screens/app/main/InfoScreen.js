@@ -1,18 +1,39 @@
 import React from "react";
-import {StyleSheet, Text, View,} from "react-native";
 import colors from "../../../shared/colors";
 
-const InfoScreen = (props) => {
+import {StyleSheet, View} from 'react-native';
+import FAQ from '../../../components/faq/FAQ'
+import {Feather} from "@expo/vector-icons";
+
+
+const InfoScreen = () => {
+    const questions = [
+        {
+            question: "Pitanje",
+            reply: "Odgovor",
+        },
+    ]
+
     return (
         <View style={styles.screen}>
-            <Text>
-                FAQ uskoro!
-            </Text>
+            <View style={styles.headerTitle}>
+                <Feather name={"book"} size={60}/>
+            </View>
+            <FAQ
+                title='INFO CENTAR'
+                questions={questions}
+            />
+
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    headerTitle: {
+        paddingTop: 5,
+        textAlign: "center",
+        alignItems: "center",
+    },
     screen: {
         flex: 1,
         paddingHorizontal: 15,
