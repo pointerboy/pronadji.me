@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {ImageBackground, StyleSheet, Text, View} from 'react-native'
 import {NavigationContainer} from "@react-navigation/native";
 import firebase from "firebase/app";
 import {ActionSheetProvider} from "@expo/react-native-action-sheet";
@@ -10,6 +11,9 @@ import DrawerNavigator from "../nav/app/DrawerNavigator";
 import {fetchLocation, loginSuccess} from "../store/actions/user";
 import {fetchCategories} from "../store/actions/categories";
 import Loader from "../components/UI/Loader";
+import AuthHeader from "../components/auth/AuthHeader";
+import Constants from "expo-constants";
+import backgroundImage from "../assets/images/kreiranje_naloga.jpg";
 
 const StartupScreen = (props) => {
     const dispatch = useDispatch();
@@ -36,15 +40,20 @@ const StartupScreen = (props) => {
                 isAutoLogin = false;
             });
         };
-        // const unsubscribe = init();
         init();
-
-        // clean up function
-        // return () => unsubscribe();
     }, []);
 
     if (isLoading) {
-        return <Loader visible={isLoading} alpha={1}/>;
+        return (
+            <View style={styles.screen}>
+                <ImageBackground source={backgroundImage} style={styles.accCreationHeader}/>
+                <AuthHeader
+                    style={styles.centerContainer}
+                    subtitle="Samo trenutak ..."
+                />
+                <Loader visible={isLoading} alpha={0}/>
+            </View>
+        );
     }
 
     return (
@@ -58,4 +67,24 @@ const StartupScreen = (props) => {
     );
 };
 
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        paddingHorizontal: 35,
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: "white",
+    },
+    buttonContainer: {
+        flexDirection: "row",
+    },
+    accCreationHeader:{
+        width:'100%',
+        height: 300
+    },
+    centerContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+});
 export default StartupScreen;
