@@ -144,7 +144,7 @@ const SearchScreen = (props) => {
             )}
 
             <View style={styles.titleContainer}>
-                <CustomText style={styles.title}>Objave blizu zadate lokacije</CustomText>
+                <CustomText style={styles.title}>Objave blizu zadate lokacije (~1km)</CustomText>
             </View>
         </View>
     );

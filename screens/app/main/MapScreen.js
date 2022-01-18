@@ -83,15 +83,16 @@ const MapScreen = (props) => {
             >
                 <Marker title="Picked Location" coordinate={markerCoordinates}/>
 
+
                 {props.route.params.from === "Search" && (
                     <MapView.Circle
                         center={{
                             latitude: selectedLocation.lat,
                             longitude: selectedLocation.lng,
                         }}
-                        radius={5000}
+                        radius={1100}
                         fillColor="rgba(0, 0, 0, 0.1)"
-                        strokeColor="black"
+                        strokeColor="#cc2900"
                         strokeWidth={2}
                     />
                 )}
