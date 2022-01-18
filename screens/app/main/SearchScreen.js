@@ -4,14 +4,12 @@ import firebase from "firebase/app";
 import * as geofirestore from "geofirestore";
 import {useSelector} from "react-redux";
 import {CardStyleInterpolators} from "@react-navigation/stack";
-import i18n from "i18n-js";
 
 import CategoryList from "../../../components/app/main/CategoryList";
 import PostList from "../../../components/app/main/PostList";
 import colors from "../../../shared/colors";
 import Post from "../../../models/post";
 import CustomText from "../../../components/UI/CustomText";
-import {API_KEY} from "env";
 
 const SearchScreen = (props) => {
     const initialCategories = useSelector((state) =>
@@ -37,7 +35,7 @@ const SearchScreen = (props) => {
         }
         setSelectedLocation({
             ...location,
-            mapUrl: `https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:A%7C${location.lat},${location.lng}&key=${API_KEY}`,
+            mapUrl: `https://www.mapquestapi.com/staticmap/v5/map?key=wEf3wbr6d4rCkKnWqUEt15eSqDxXbMok&zoom=15&center=${location.lat},${location.lng}&size=400,200@2x`,
         });
         setIsLoadingLocation(false);
     };
@@ -82,25 +80,22 @@ const SearchScreen = (props) => {
 
             const postDate = new Date(data.postDate);
 
-            const dateDiff = postDate.getTime() - new Date();
-            if (dateDiff > 0) {
-                result.push(
-                    new Post(
-                        id,
-                        data.title,
-                        data.description,
-                        data.categoryId,
-                        data.imageUrl,
-                        data.mapUrl,
-                        data.coordinates.latitude,
-                        data.coordinates.longitude,
-                        postDate,
-                        data.uid,
-                        post.distance,
-                        data.address
-                    )
-                );
-            }
+            result.push(
+                new Post(
+                    id,
+                    data.title,
+                    data.description,
+                    data.categoryId,
+                    data.imageUrl,
+                    data.mapUrl,
+                    data.coordinates.latitude,
+                    data.coordinates.longitude,
+                    postDate,
+                    data.uid,
+                    post.distance,
+                    data.address
+                )
+            );
         });
 
         setPosts(result);
@@ -126,7 +121,7 @@ const SearchScreen = (props) => {
             />
 
             <View style={styles.titleContainer}>
-                <CustomText style={styles.title}>{i18n.t("searchScreen.header1")}</CustomText>
+                <CustomText style={styles.title}>Trenutna lokacija</CustomText>
             </View>
 
             {isLoadingLocation ? (
@@ -149,7 +144,7 @@ const SearchScreen = (props) => {
             )}
 
             <View style={styles.titleContainer}>
-                <CustomText style={styles.title}>{i18n.t("searchScreen.header2")}</CustomText>
+                <CustomText style={styles.title}>Objave blizu zadate lokacije</CustomText>
             </View>
         </View>
     );
@@ -199,7 +194,7 @@ const styles = StyleSheet.create({
 });
 
 export const screenOptions = {
-    headerTitle: i18n.t("searchScreen.headerTitle"),
+    headerTitle: 'Pretraga',
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 
