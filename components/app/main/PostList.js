@@ -34,6 +34,7 @@ const PostList = (props) => {
                     description: itemData.item.description,
                     imageUrl: itemData.item.imageUrl,
                     mapUrl: itemData.item.mapUrl,
+                    postDate: itemData.item.postDate,
                     location: {
                         lat: itemData.item.lat,
                         lng: itemData.item.lng,

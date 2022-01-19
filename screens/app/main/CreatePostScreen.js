@@ -105,13 +105,13 @@ const CreatePostScreen = (props) => {
                         new Date(Date.now())
                     )
                 );
-                showSuccess(i18n.t("createPostScreen.postCreated"), title);
+                showSuccess('Objava je uspešno postavljena!', title);
                 props.navigation.goBack();
             } catch (error) {
                 showError(error.message);
             }
         } else {
-            showError(i18n.t("createPostScreen.error"));
+            showError("Došlo je do greške prilokom postavljanja objave!");
         }
         setIsLoading(false);
     }, [

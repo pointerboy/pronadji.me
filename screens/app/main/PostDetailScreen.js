@@ -16,6 +16,7 @@ const PostDetailScreen = (props) => {
         location,
         categoryId,
         distance,
+        postDate
     } = props.route.params;
 
     const pressLocationHandler = () => {
@@ -32,7 +33,7 @@ const PostDetailScreen = (props) => {
     distanceText = `${(distance * 1000).toFixed(0)}m`;
 
     moment.locale('sr');
-    let postDate = moment(props.postDate).calendar();
+    let date = moment(postDate).calendar();
 
     return (
         <ScrollView style={styles.screen}>
@@ -64,7 +65,7 @@ const PostDetailScreen = (props) => {
             <View style={styles.clockContainer}>
                 <Feather size={30} name={"clock"}/>
                 <CustomText style={styles.title}>
-                    {postDate}
+                    {date}
                 </CustomText>
             </View>
 
