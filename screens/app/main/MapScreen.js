@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
-import {Platform, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Alert, Platform, StyleSheet, TouchableOpacity, View} from "react-native";
 import MapView, {Marker} from "react-native-maps";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {Ionicons} from "@expo/vector-icons";
@@ -38,6 +38,7 @@ const MapScreen = (props) => {
 
     const selectLocationHandler = (event) => {
         if (readonly) {
+            Alert.alert("readonly or somethingh");
             return;
         }
         setSelectedLocation({
@@ -48,7 +49,7 @@ const MapScreen = (props) => {
 
     const saveLocationHandler = useCallback(() => {
         if (!selectedLocation) {
-            // could show an alert!
+            Alert.alert("readonly or some11111111thingh");
             return;
         }
         props.navigation.navigate(props.route.params.from, {
@@ -58,6 +59,7 @@ const MapScreen = (props) => {
 
     useEffect(() => {
         if (readonly) {
+            Alert.alert("readonly or somethingh333333");
             return;
         }
         props.navigation.setOptions({
@@ -73,45 +75,48 @@ const MapScreen = (props) => {
         });
     }, [saveLocationHandler]);
 
-    return (
-        <View style={styles.screen}>
-            <MapView
-                style={styles.map}
-                initialRegion={mapRegion}
-                onPress={selectLocationHandler}
-                ref={map}
-            >
-                <Marker title="Picked Location" coordinate={markerCoordinates}/>
+    try {
+        return (
 
-
-                {props.route.params.from === "Search" && (
-                    <MapView.Circle
-                        center={{
-                            latitude: selectedLocation.lat,
-                            longitude: selectedLocation.lng,
-                        }}
-                        radius={1100}
-                        fillColor="rgba(0, 0, 0, 0.1)"
-                        strokeColor="#cc2900"
-                        strokeWidth={2}
-                    />
-                )}
-            </MapView>
-            {!readonly && (
-                <TouchableOpacity
-                    activeOpacity={0.6}
-                    onPress={getCurrentLocationHandler}
-                    style={styles.button}
+            <View style={styles.screen}>
+                <MapView
+                    style={styles.map}
+                    initialRegion={mapRegion}
+                    onPress={selectLocationHandler}
+                    ref={map}
                 >
-                    <Ionicons
-                        name={Platform.OS === "android" ? "md-locate" : "ios-locate"}
-                        size={20}
-                        color="black"
-                    />
-                </TouchableOpacity>
-            )}
-        </View>
-    );
+                    <Marker title="Izabrana lokacija" coordinate={markerCoordinates}/>
+                    {props.route.params.from === "Search" && (
+                        <MapView.Circle
+                            center={{
+                                latitude: selectedLocation.lat,
+                                longitude: selectedLocation.lng,
+                            }}
+                            radius={1100}
+                            fillColor="rgba(0, 0, 0, 0.1)"
+                            strokeColor="#cc2900"
+                            strokeWidth={2}
+                        />
+                    )}
+                </MapView>
+                {!readonly && (
+                    <TouchableOpacity
+                        activeOpacity={0.6}
+                        onPress={getCurrentLocationHandler}
+                        style={styles.button}
+                    >
+                        <Ionicons
+                            name={Platform.OS === "android" ? "md-locate" : "ios-locate"}
+                            size={20}
+                            color="black"
+                        />
+                    </TouchableOpacity>
+                )}
+            </View>
+        );
+    } catch(err){
+        throw err;
+    }
 };
 
 const styles = StyleSheet.create({

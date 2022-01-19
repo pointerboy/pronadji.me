@@ -31,12 +31,12 @@ export const loginSuccess = () => {
 };
 
 const getCurrentLocation = async () => {
-    const {status} = await Permissions.askAsync(Permissions.LOCATION);
+    const {status} =  await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
         Alert.alert(
-            "Insufficient permissions!",
-            "You need to grant location permissions to use this app.",
-            [{text: "Retry", onPress: () => Updates.reloadAsync()}]
+            "Greška prilikom pokretanja!",
+            "Morate dozvoliti ovoj aplikaciji da pristupi Vašoj lokaciji.",
+            [{text: "POKUŠAJ PONOVO", onPress: () => Updates.reloadAsync()}]
         );
         return;
     } else {
@@ -62,31 +62,35 @@ const getCurrentLocation = async () => {
 };
 
 export const fetchLocation = () => {
-    return async (dispatch) => {
-        const currentLocation = await getCurrentLocation();
+    try {
+        return async (dispatch) => {
+            const currentLocation = await getCurrentLocation();
 
-        await Location.watchPositionAsync(
-            {
-                accuracy: 6,
-                timeInterval: 5000,
-                distanceInterval: 20,
-            },
-            (location) => {
-                dispatch({
-                    type: SET_LOCATION,
-                    location: {
-                        lat: location.coords.latitude,
-                        lng: location.coords.longitude,
-                    },
-                });
-            }
-        );
+            await Location.watchPositionAsync(
+                {
+                    accuracy: 6,
+                    timeInterval: 5000,
+                    distanceInterval: 20,
+                },
+                (location) => {
+                    dispatch({
+                        type: SET_LOCATION,
+                        location: {
+                            lat: location.coords.latitude,
+                            lng: location.coords.longitude,
+                        },
+                    });
+                }
+            );
 
-        dispatch({
-            type: SET_LOCATION,
-            location: currentLocation,
-        });
-    };
+            dispatch({
+                type: SET_LOCATION,
+                location: currentLocation,
+            });
+        };
+    } catch(err) {
+        throw err;
+    }
 };
 
 export const changeNickname = (nickname) => {

@@ -1,5 +1,17 @@
 {
   "expo": {
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "Cats",
+            "project": "cats-os",
+            "authToken": "e53ada440dfd4fec83fdaa194ef0ff262adb60d631dd4a6d878389e6de62fa28"
+          }
+        }
+      ]
+    },
     "name": "lostandfound",
     "slug": "lostandfound",
     "version": "1.0.0",
@@ -20,9 +32,17 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.hacktrick.lostandfound",
+      "versionCode": 1,
       "permissions": [
-        "ACCESS_BACKGROUND_LOCATION"
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
       ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDHYFW7fssaFdWWpIwkmgRJKiWKvJiA2Ds"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
@@ -30,6 +50,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "sentry-expo"
+    ]
   }
 }
