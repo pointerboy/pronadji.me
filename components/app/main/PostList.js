@@ -50,7 +50,7 @@ const PostList = (props) => {
             data={props.data}
             renderItem={renderItem}
             keyExtractor={(item) => item.id}
-            numColumns={2}
+            numColumns={1}
             ListHeaderComponent={props.header}
             onRefresh={props.onRefresh}
             refreshing={props.refreshing}

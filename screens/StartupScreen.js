@@ -13,7 +13,7 @@ import {fetchCategories} from "../store/actions/categories";
 import Loader from "../components/UI/Loader";
 import AuthHeader from "../components/auth/AuthHeader";
 import Constants from "expo-constants";
-import backgroundImage from "../assets/images/kreiranje_naloga.jpg";
+import backgroundImage from "../assets/images/hack.png";
 
 const StartupScreen = (props) => {
     const dispatch = useDispatch();
@@ -46,12 +46,7 @@ const StartupScreen = (props) => {
     if (isLoading) {
         return (
             <View style={styles.screen}>
-                <ImageBackground source={backgroundImage} style={styles.accCreationHeader}/>
-                <AuthHeader
-                    style={styles.centerContainer}
-                    subtitle="Samo trenutak ..."
-                />
-                <Loader visible={isLoading} alpha={0}/>
+                <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.startup}/>
             </View>
         );
     }
@@ -77,9 +72,9 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
     },
-    accCreationHeader:{
-        width:'100%',
-        height: 300
+    startup:{
+        flex: 1,
+        justifyContent: "center"
     },
     centerContainer: {
         flex: 1,
