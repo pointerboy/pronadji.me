@@ -23,6 +23,7 @@ import colors from "../../../shared/colors";
 import {showError, showSuccess, takeImage, takeImageActionSheetOptions,} from "../../../shared/utils";
 import {createPost} from "../../../store/actions/posts";
 import Loader from "../../../components/UI/Loader";
+import * as ImagePicker from "expo-image-picker";
 
 const CreatePostScreen = (props) => {
     const {params} = props.route;
@@ -42,6 +43,7 @@ const CreatePostScreen = (props) => {
     const [selectedLocation, setSelectedLocation] = useState(currentLocation);
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingLocation, setIsLoadingLocation] = useState(false);
+    const [image, setImage] = useState(null);
 
     const descriptionRef = useRef(null);
 
@@ -70,13 +72,17 @@ const CreatePostScreen = (props) => {
         getLocation();
     }, [params]);
 
-    const takeImageHandler = () => {
-        showActionSheetWithOptions(takeImageActionSheetOptions, async (index) => {
-            if (index !== 2) {
-                const imageUri = await takeImage(index);
-                setSelectedImage(imageUri);
-            }
+    const takeImageHandler = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
         });
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
     };
 
     const pickLocationHandler = () => {
@@ -93,7 +99,7 @@ const CreatePostScreen = (props) => {
     const createPostHandler = useCallback(async () => {
         Keyboard.dismiss();
         setIsLoading(true);
-        if (selectedImage && title !== "" && description !== "") {
+        if (title !== "" && description !== "") {
             try {
                 await dispatch(
                     createPost(
@@ -168,7 +174,7 @@ const CreatePostScreen = (props) => {
 
             <View style={styles.titleContainer}>
                 <CustomText style={styles.title}>
-                    Fotografija
+                    Ako je moguće, priložite fotografiju
                 </CustomText>
             </View>
 
