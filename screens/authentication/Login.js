@@ -96,7 +96,7 @@ const LoginScreen = (props) => {
                             activeOpacity={0.6}
                         >
                             <CustomText style={styles.switchToSignUpText}>
-                                Kreirajte ga odmah
+                                Kreirajte ga odmah!
                             </CustomText>
                         </TouchableOpacity>
                     </View>

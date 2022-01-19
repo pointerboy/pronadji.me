@@ -1,14 +1,10 @@
 import React from "react";
-import {Platform, ScrollView, StyleSheet, TouchableOpacity, View,} from "react-native";
-import {HeaderButtons, Item} from "react-navigation-header-buttons";
-import {Ionicons} from "@expo/vector-icons";
-import i18n from "i18n-js";
+import {Alert, Platform, ScrollView, StyleSheet, TouchableOpacity, View,} from "react-native";
+import {Feather, Ionicons} from "@expo/vector-icons";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 
-import HeaderButton from "../../../components/UI/HeaderButton";
 import CustomText from "../../../components/UI/CustomText";
 import colors from "../../../shared/colors";
-import {changeLanguage, changeLanguageActionSheetOptions,} from "../../../shared/utils";
 
 const Setting = (props) => {
     return (
@@ -26,35 +22,22 @@ const Setting = (props) => {
 const SettingsScreen = (props) => {
     const {showActionSheetWithOptions} = useActionSheet();
 
-    const changeLanguageHandler = () => {
-        showActionSheetWithOptions(changeLanguageActionSheetOptions, (index) => {
-            if (index !== 2) {
-                changeLanguage(index);
-            }
-        });
-    };
-
+    // brisanje naloga je striktno fiktivna funkcija
     return (
         <ScrollView contentContainerStyle={styles.screen}>
             <View style={{...styles.container, paddingTop: 0}}>
-                <CustomText style={styles.title}>{i18n.t("settingsScreen.header1")}</CustomText>
+                <CustomText style={styles.title}>Korisnička podešavanja</CustomText>
                 <Setting
-                    label={i18n.t("settingsScreen.item1")}
+                    label='Podešavanja naloga'
                     iconName={Platform.OS === "android" ? "md-card" : "ios-card"}
                     onPress={() => props.navigation.navigate("AccountSetting")}
                 />
-            </View>
-
-            <View style={styles.container}>
-                <CustomText style={styles.title}>{i18n.t("settingsScreen.header2")}</CustomText>
                 <Setting
-                    label={i18n.t("settingsScreen.item2")}
-                    iconName={Platform.OS === "android" ? "md-globe" : "ios-globe"}
-                    onPress={changeLanguageHandler}
+                    label='Brisanje naloga'
+                    iconName={Platform.OS === "android" ? "book" : "ios-card"}
+                    onPress={() => Alert.alert("Brisanje naloga", "Zahtjev za brisanje naloga i Vaših objava možete učiniti preko našeg sajta.")}
                 />
             </View>
-
-            {/* Temporary */}
         </ScrollView>
     );
 };
@@ -88,20 +71,7 @@ const styles = StyleSheet.create({
 
 export const screenOptions = (navData) => {
     return {
-        headerTitle: i18n.t("settingsScreen.headerTitle"),
-        headerTitleStyle: {
-        },
-        headerLeft: () => (
-            <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                <Item
-                    iconName="ios-menu"
-                    color="black"
-                    onPress={() => {
-                        navData.navigation.toggleDrawer();
-                    }}
-                />
-            </HeaderButtons>
-        ),
+        headerMode: 'none',
     };
 };
 

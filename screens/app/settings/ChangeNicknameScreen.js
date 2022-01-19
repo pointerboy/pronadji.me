@@ -3,7 +3,6 @@ import {StyleSheet, TouchableOpacity, View} from "react-native";
 import Constants from "expo-constants";
 import {CardStyleInterpolators} from "@react-navigation/stack";
 import {useDispatch, useSelector} from "react-redux";
-import i18n from "i18n-js";
 
 import {changeNickname} from "../../../store/actions/user";
 import CustomTextInput from "../../../components/UI/CustomTextInput";
@@ -51,7 +50,7 @@ const ChangeNicknameScreen = (props) => {
                         fontSize: 16,
                     }}
                 >
-                    {i18n.t("changeNicknameScreen.buttonText")}
+                    Promeni
                 </CustomText>
             </TouchableOpacity>
         </View>
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
 });
 
 export const screenOptions = {
-    title: i18n.t("changeNicknameScreen.headerTitle"),
+    title: 'Promena korisničkog imena',
     headerTitleStyle: {
     },
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,

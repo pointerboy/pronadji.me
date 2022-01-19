@@ -110,7 +110,7 @@ const CreatePostScreen = (props) => {
                         new Date(Date.now())
                     )
                 );
-                showSuccess('Objava je uspešno postavljena!', title);
+                showSuccess('Objava je uspješno postavljena!', title);
                 props.navigation.goBack();
             } catch (error) {
                 showError("Došlo je do greške. Pokušajte ponovo.");

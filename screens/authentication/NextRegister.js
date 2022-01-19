@@ -10,11 +10,9 @@ import i18n from "i18n-js";
 
 import CustomTextInput from "../../components/UI/CustomTextInput";
 import MyButton from "../../components/UI/MyButton";
-import AuthHeader from "../../components/auth/AuthHeader";
 import {showError, showSuccess, takeImage, takeImageActionSheetOptions,} from "../../shared/utils";
 import {signUp} from "../../store/actions/user";
 import Loader from "../../components/UI/Loader";
-import ConfettiCannon from "react-native-confetti-cannon";
 
 const NextSignUpScreen = (props) => {
     const {showActionSheetWithOptions} = useActionSheet();
@@ -57,7 +55,7 @@ const NextSignUpScreen = (props) => {
                     selectedImage, phoneNumber
                 )
             );
-            showSuccess("Uspešno registrovani!", "Dobro došli na platformu!");
+            showSuccess("Uspšejno registrovani!", "Dobro došli na platformu!");
 
         } catch (error) {
             showError(error.message);
