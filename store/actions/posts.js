@@ -141,11 +141,16 @@ export const createPost = (
             address: selectedLocation.address,
         });
 
+        let fileName = "bez_slike.png";
         const ref = firebase.storage().ref().child("posts");
-        const fileName = id + ".jpg";
-        const file = await fetch(selectedImage);
-        const fileBlob = await file.blob();
-        await ref.child(fileName).put(fileBlob);
+
+        if(selectedImage) {
+            const fileName = id + ".jpg";
+            const file = await fetch(selectedImage);
+            const fileBlob = await file.blob();
+            await ref.child(fileName).put(fileBlob);
+        }
+
         const imageUrl = await ref.child(fileName).getDownloadURL();
 
         await firebase
