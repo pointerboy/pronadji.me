@@ -43,7 +43,6 @@ const CreatePostScreen = (props) => {
     const [selectedLocation, setSelectedLocation] = useState(currentLocation);
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingLocation, setIsLoadingLocation] = useState(false);
-    const [image, setImage] = useState(null);
 
     const descriptionRef = useRef(null);
 
@@ -81,7 +80,7 @@ const CreatePostScreen = (props) => {
         });
 
         if (!result.cancelled) {
-            setImage(result.uri);
+            setSelectedImage(result.uri); // slika na korisničkom interfejsu
         }
     };
 
@@ -114,10 +113,10 @@ const CreatePostScreen = (props) => {
                 showSuccess('Objava je uspešno postavljena!', title);
                 props.navigation.goBack();
             } catch (error) {
-                showError(error.message);
+                showError("Došlo je do greške. Pokušajte ponovo.");
             }
         } else {
-            showError("Došlo je do greške prilokom postavljanja objave!");
+            showError("Morate popuniti polje za unos imena i opisa predmeta!");
         }
         setIsLoading(false);
     }, [

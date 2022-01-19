@@ -144,8 +144,9 @@ export const createPost = (
         let fileName = "bez_slike.png";
         const ref = firebase.storage().ref().child("posts");
 
-        if(selectedImage) {
-            const fileName = id + ".jpg";
+        console.log("OVO JE SLIKA::: " + selectedImage);
+        if(selectedImage !== "") {
+            fileName = id + ".jpg";
             const file = await fetch(selectedImage);
             const fileBlob = await file.blob();
             await ref.child(fileName).put(fileBlob);
