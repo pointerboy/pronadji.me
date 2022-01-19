@@ -5,11 +5,11 @@ import {CardStyleInterpolators} from "@react-navigation/stack";
 import {useDispatch, useSelector} from "react-redux";
 import {Ionicons} from "@expo/vector-icons";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
-import i18n from "i18n-js";
 
 import SettingItem from "../../../components/app/settings/SettingItem";
-import {changeImage} from "../../../store/actions/user";
 import Loader from "../../../components/UI/Loader";
+import {handleImagePicker} from "../../../shared/utils";
+import {changeImage} from "../../../store/actions/user";
 
 const AccountSettingScreen = (props) => {
     const dispatch = useDispatch();
@@ -20,8 +20,18 @@ const AccountSettingScreen = (props) => {
     const [selectedImage, setSelectedImage] = useState(user.imageUrl);
     const [isLoading, setIsLoading] = useState(false);
 
-    const takeImageHandler = () => {
+    const takeImageHandler = async () => {
+        let result = await handleImagePicker();
 
+        if (!result.cancelled) {
+            if(selectedImage) {
+                setIsLoading(true);
+
+                await dispatch(changeImage(selectedImage.uri));
+                setSelectedImage(result.uri);
+            }
+            setIsLoading(false);
+        }
     };
 
     return (

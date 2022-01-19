@@ -20,7 +20,13 @@ import CustomText from "../../../components/UI/CustomText";
 import CustomTextInput from "../../../components/UI/CustomTextInput";
 import CategoryList from "../../../components/app/main/CategoryList";
 import colors from "../../../shared/colors";
-import {showError, showSuccess, takeImage, takeImageActionSheetOptions,} from "../../../shared/utils";
+import {
+    handleImagePicker,
+    showError,
+    showSuccess,
+    takeImage,
+    takeImageActionSheetOptions,
+} from "../../../shared/utils";
 import {createPost} from "../../../store/actions/posts";
 import Loader from "../../../components/UI/Loader";
 import * as ImagePicker from "expo-image-picker";
@@ -72,15 +78,10 @@ const CreatePostScreen = (props) => {
     }, [params]);
 
     const takeImageHandler = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 1,
-        });
+        let result = await handleImagePicker();
 
         if (!result.cancelled) {
-            setSelectedImage(result.uri); // slika na korisničkom interfejsu
+            setSelectedImage(result.uri);
         }
     };
 

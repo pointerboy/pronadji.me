@@ -7,7 +7,18 @@ import i18n from "i18n-js";
 import ConfettiCannon from 'react-native-confetti-cannon';
 
 import colors from "./colors";
+import * as ImagePicker from "expo-image-picker";
 
+export const handleImagePicker = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+    });
+
+    return result;
+}
 const showToast = (title, text, color, duration, icon) => {
     Toast.show({
         title: title,

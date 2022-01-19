@@ -13,6 +13,7 @@ import MyButton from "../../components/UI/MyButton";
 import {showError, showSuccess, takeImage, takeImageActionSheetOptions,} from "../../shared/utils";
 import {signUp} from "../../store/actions/user";
 import Loader from "../../components/UI/Loader";
+import {handleImagePicker} from "../../shared/utils";
 
 const NextSignUpScreen = (props) => {
     const {showActionSheetWithOptions} = useActionSheet();
@@ -27,20 +28,19 @@ const NextSignUpScreen = (props) => {
     const passwordRef = useRef(null);
     const confirmPasswordRef = useRef(null);
 
-    const takeImageHandler = () => {
-        showActionSheetWithOptions(takeImageActionSheetOptions, async (index) => {
-            if (index !== 2) {
-                const imageUri = await takeImage(index);
-                setSelectedImage(imageUri);
-            }
-        });
+    const takeImageHandler = async () => {
+        let result = await handleImagePicker();
+
+        if (!result.cancelled) {
+            setSelectedImage(result.uri);
+        }
     };
 
     const signUpHandler = async () => {
         setIsLoading(true);
         try {
             if (password !== confirmPassword) {
-                throw new Error(i18n.t("nextSignUpScreen.passwordError"));
+                throw new Error('Unete lozinke moraju biti iste!');
             }
 
             if (phoneNumber.length < 6) {
