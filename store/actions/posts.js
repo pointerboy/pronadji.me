@@ -29,8 +29,6 @@ export const fetchAllPosts = (currentLocation, radius) => {
             const id = post.id;
             const data = post.data();
 
-            console.log(data.userPhoneNumber);
-
             const date = new Date(data.postDate);
             posts.push(
                 new Post(
