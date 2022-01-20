@@ -38,7 +38,6 @@ const MapScreen = (props) => {
 
     const selectLocationHandler = (event) => {
         if (readonly) {
-            Alert.alert("readonly or somethingh");
             return;
         }
         setSelectedLocation({
@@ -49,7 +48,6 @@ const MapScreen = (props) => {
 
     const saveLocationHandler = useCallback(() => {
         if (!selectedLocation) {
-            Alert.alert("readonly or some11111111thingh");
             return;
         }
         props.navigation.navigate(props.route.params.from, {
@@ -59,7 +57,6 @@ const MapScreen = (props) => {
 
     useEffect(() => {
         if (readonly) {
-            Alert.alert("readonly or somethingh333333");
             return;
         }
         props.navigation.setOptions({
@@ -86,6 +83,17 @@ const MapScreen = (props) => {
                     ref={map}
                 >
                     <Marker title="Izabrana lokacija" coordinate={markerCoordinates}/>
+                    <MapView.Circle
+                        center={{
+                            latitude: selectedLocation.lat,
+                            longitude: selectedLocation.lng,
+                        }}
+                        radius={150}
+                        fillColor="rgba(0, 0, 0, 0.1)"
+                        strokeColor="#cc2900"
+                        strokeWidth={2}
+                    />
+
                     {props.route.params.from === "Search" && (
                         <MapView.Circle
                             center={{
@@ -109,6 +117,17 @@ const MapScreen = (props) => {
                             name={Platform.OS === "android" ? "md-locate" : "ios-locate"}
                             size={20}
                             color="black"
+                        />
+
+                        <MapView.Circle
+                            center={{
+                                latitude: selectedLocation.lat,
+                                longitude: selectedLocation.lng,
+                            }}
+                            radius={150}
+                            fillColor="rgba(0, 0, 0, 0.1)"
+                            strokeColor="#cc2900"
+                            strokeWidth={2}
                         />
                     </TouchableOpacity>
                 )}

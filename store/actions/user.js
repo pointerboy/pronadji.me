@@ -22,8 +22,6 @@ export const loginSuccess = () => {
         const ref = await firebase.firestore().collection("users").doc(uid).get();
         const userData = ref.data();
 
-        console.log(uid);
-
         dispatch({
             type: SET_USER,
             userData: {

@@ -53,7 +53,7 @@ const NextSignUpScreen = (props) => {
                     selectedImage, phoneNumber
                 )
             );
-            showSuccess("Uspšejno registrovani!", "Dobro došli na platformu!");
+            showSuccess("Uspješno ste registrovani!", "Dobro došli na platformu!");
 
         } catch (error) {
             showError(error.message);

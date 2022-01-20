@@ -1,5 +1,13 @@
 import React, {useRef, useState} from "react";
-import {KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View,} from "react-native";
+import {
+    ImageBackground,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    TouchableOpacity,
+    View,
+} from "react-native";
 import {CardStyleInterpolators} from "@react-navigation/stack";
 import {useDispatch} from "react-redux";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
@@ -13,6 +21,7 @@ import AuthHeader from "../../components/auth/AuthHeader";
 import {login, loginWithFacebook} from "../../store/actions/user";
 import {showError, showSuccess,} from "../../shared/utils";
 import Loader from "../../components/UI/Loader";
+import backgroundImage from "../../assets/splash.png";
 
 const LoginScreen = (props) => {
     const dispatch = useDispatch();
@@ -28,7 +37,7 @@ const LoginScreen = (props) => {
             try {
                 await dispatch(login(email.trim(), password));
                 showSuccess(
-                    'Uspešna prijava!',
+                    'Uspješna prijava!',
                     'Dobro došli nazad!'
                 );
             } catch (error) {
@@ -54,11 +63,7 @@ const LoginScreen = (props) => {
                 >
                     <Loader visible={isLoading}/>
 
-                    <AuthHeader
-                        style={styles.centerContainer}
-                        title="Lost&Found"
-                        image={require("../../assets/images/logo.png")}
-                    />
+                    <ImageBackground source={backgroundImage} style={styles.accCreationHeader}/>
 
                     <View style={styles.textInputContainer}>
                         <CustomTextInput

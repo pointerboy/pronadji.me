@@ -61,7 +61,7 @@ const AccountSettingScreen = (props) => {
                         text={user.email}
                     />
                     <SettingItem
-                        title='Promena korisničkog imena'
+                        title='Promjena korisničkog imena'
                         text={user.nickname}
                         onPress={() => {
                             props.navigation.navigate("ChangeNickname");
