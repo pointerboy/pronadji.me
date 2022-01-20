@@ -9,7 +9,7 @@ import {Feather} from "@expo/vector-icons";
 import moment from "moment";
 import {useDispatch} from "react-redux";
 import {getCurrentUserId} from "../../../store/actions/user";
-import {deletePost, getOwnerPhoneNumber} from "../../../store/actions/posts";
+import {deletePost} from "../../../store/actions/posts";
 import {showError, showSuccess} from "../../../shared/utils";
 
 const PostDetailScreen = (props) => {

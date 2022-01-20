@@ -19,16 +19,9 @@ import CustomText from "../../../components/UI/CustomText";
 import CustomTextInput from "../../../components/UI/CustomTextInput";
 import CategoryList from "../../../components/app/main/CategoryList";
 import colors from "../../../shared/colors";
-import {
-    handleImagePicker,
-    showError,
-    showSuccess,
-    takeImage,
-    takeImageActionSheetOptions,
-} from "../../../shared/utils";
+import {handleImagePicker, showError, showSuccess,} from "../../../shared/utils";
 import {createPost} from "../../../store/actions/posts";
 import Loader from "../../../components/UI/Loader";
-import * as ImagePicker from "expo-image-picker";
 
 const CreatePostScreen = (props) => {
     const {params} = props.route;

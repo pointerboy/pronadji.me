@@ -14,8 +14,7 @@ const CustomText = (props) => {
 };
 
 const styles = StyleSheet.create({
-    text: {
-    },
+    text: {},
 });
 
 export default CustomText;

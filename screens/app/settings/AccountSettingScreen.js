@@ -24,7 +24,7 @@ const AccountSettingScreen = (props) => {
         let result = await handleImagePicker();
 
         if (!result.cancelled) {
-            if(selectedImage) {
+            if (selectedImage) {
                 setIsLoading(true);
 
                 await dispatch(changeImage(selectedImage.uri));
@@ -110,8 +110,7 @@ const styles = StyleSheet.create({
 
 export const screenOptions = {
     title: 'Podešavanja naloga',
-    headerTitleStyle: {
-    },
+    headerTitleStyle: {},
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 

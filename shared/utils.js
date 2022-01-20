@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Alert, Platform} from "react-native";
+import React from "react";
+import {Platform} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import {Toast} from "popup-ui";
 
@@ -42,7 +42,7 @@ export const showSuccess = (
         text,
         colors.success,
         duration,
-        <ConfettiCannon count={100} origin={{x: -10, y: 0}} />
+        <ConfettiCannon count={100} origin={{x: -10, y: 0}}/>
     );
 };
 

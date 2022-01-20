@@ -1,6 +1,6 @@
 import React from "react";
 import {Alert, Platform, ScrollView, StyleSheet, TouchableOpacity, View,} from "react-native";
-import {Feather, Ionicons} from "@expo/vector-icons";
+import {Ionicons} from "@expo/vector-icons";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 
 import CustomText from "../../../components/UI/CustomText";

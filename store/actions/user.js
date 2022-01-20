@@ -1,8 +1,6 @@
 import firebase from "firebase/app";
 import {Alert} from "react-native";
 import * as Location from "expo-location";
-import * as Facebook from "expo-facebook";
-import * as Permissions from "expo-permissions";
 import * as Updates from "expo-updates";
 
 export const SET_USER = "SET_USER";
@@ -36,7 +34,7 @@ export const loginSuccess = () => {
 };
 
 const getCurrentLocation = async () => {
-    const {status} =  await Location.requestForegroundPermissionsAsync();
+    const {status} = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
         Alert.alert(
             "Greška prilikom pokretanja!",
@@ -93,7 +91,7 @@ export const fetchLocation = () => {
                 location: currentLocation,
             });
         };
-    } catch(err) {
+    } catch (err) {
         throw err;
     }
 };

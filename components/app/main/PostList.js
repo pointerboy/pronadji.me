@@ -1,9 +1,7 @@
 import React from "react";
-import {FlatList, Platform, StyleSheet, View, Image, Text} from "react-native";
+import {FlatList, Image, StyleSheet, Text, View} from "react-native";
 
 import PostItem from "./PostItem";
-import CustomText from "../../UI/CustomText";
-import {Ionicons} from "@expo/vector-icons";
 import colors from "../../../shared/colors";
 
 import backgroundImage from "../../../assets/images/bez_objava.png"
@@ -12,7 +10,8 @@ const PostList = (props) => {
     const emptyComponent = () => (
         <View style={styles.container}>
             <Image source={backgroundImage} resizeMode="cover" style={styles.logo}/>
-            <Text style={styles.logoText}>Gledali smo svuda, prevrnuli svaki kamnečić, ali ništa nijesmo mogli naći.</Text>
+            <Text style={styles.logoText}>Gledali smo svuda, prevrnuli svaki kamnečić, ali ništa nijesmo mogli
+                naći.</Text>
         </View>
     );
 
@@ -24,8 +23,8 @@ const PostList = (props) => {
             imageUrl={itemData.item.imageUrl}
             postDate={itemData.item.postDate}
             distance={itemData.item.distance}
-            uid = {itemData.item.uid}
-            userPhoneNumber = {itemData.item.userPhoneNumber}
+            uid={itemData.item.uid}
+            userPhoneNumber={itemData.item.userPhoneNumber}
             onPress={() => {
                 props.navigation.navigate("PostDetail", {
                     id: itemData.item.id,
@@ -80,12 +79,12 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 15,
     },
-    container:{
+    container: {
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 15,
     },
-    logoText:{
+    logoText: {
         fontSize: 16,
         textAlign: "center"
     },

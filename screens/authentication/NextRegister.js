@@ -1,5 +1,14 @@
 import React, {useRef, useState} from "react";
-import {Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View, Text} from "react-native";
+import {
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
+} from "react-native";
 import {CardStyleInterpolators} from "@react-navigation/stack";
 import {useDispatch} from "react-redux";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
@@ -8,10 +17,9 @@ import {Ionicons} from "@expo/vector-icons";
 
 import CustomTextInput from "../../components/UI/CustomTextInput";
 import MyButton from "../../components/UI/MyButton";
-import {showError, showSuccess,} from "../../shared/utils";
+import {handleImagePicker, showError, showSuccess,} from "../../shared/utils";
 import {signUp} from "../../store/actions/user";
 import Loader from "../../components/UI/Loader";
-import {handleImagePicker} from "../../shared/utils";
 
 const NextSignUpScreen = (props) => {
     const {showActionSheetWithOptions} = useActionSheet();
@@ -156,10 +164,10 @@ const styles = StyleSheet.create({
         paddingHorizontal: 35,
         backgroundColor: "white",
     },
-    hintText:{
-        flex:1,
+    hintText: {
+        flex: 1,
         fontSize: 24,
-        textAlign:"center"
+        textAlign: "center"
     },
     scrollView: {
         flexGrow: 1,

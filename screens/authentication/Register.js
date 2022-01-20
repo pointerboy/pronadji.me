@@ -1,7 +1,15 @@
 import React, {useState} from "react";
-import {KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View, ImageBackground, Text} from "react-native";
+import {
+    ImageBackground,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    TouchableOpacity,
+    View
+} from "react-native";
 import {CardStyleInterpolators} from "@react-navigation/stack";
-import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
+import {connectActionSheet,} from "@expo/react-native-action-sheet";
 import Constants from "expo-constants";
 
 import MyButton from "../../components/UI/MyButton";
@@ -9,8 +17,7 @@ import CustomText from "../../components/UI/CustomText";
 import CustomTextInput from "../../components/UI/CustomTextInput";
 import colors from "../../shared/colors";
 import AuthHeader from "../../components/auth/AuthHeader";
-import {changeLanguage, changeLanguageActionSheetOptions, showError,} from "../../shared/utils";
-import backgroundImage from "../../assets/images/kreiranje_naloga.jpg";
+import {showError,} from "../../shared/utils";
 
 const SignUpScreen = (props) => {
     const [nickname, setNickname] = useState("");
@@ -92,8 +99,8 @@ const styles = StyleSheet.create({
         right: 20,
         top: Constants.statusBarHeight + 15,
     },
-    accCreationHeader:{
-        width:'100%',
+    accCreationHeader: {
+        width: '100%',
         height: 300
     },
     scrollView: {

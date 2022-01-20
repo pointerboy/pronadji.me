@@ -77,8 +77,7 @@ const styles = StyleSheet.create({
 
 export const screenOptions = {
     title: 'Promena korisničkog imena',
-    headerTitleStyle: {
-    },
+    headerTitleStyle: {},
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 

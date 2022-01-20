@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {ImageBackground, StyleSheet, Text, View} from 'react-native'
+import {ImageBackground, StyleSheet, View} from 'react-native'
 import {NavigationContainer} from "@react-navigation/native";
 import firebase from "firebase/app";
 import {ActionSheetProvider} from "@expo/react-native-action-sheet";
@@ -10,8 +10,6 @@ import AuthNavigator from "../nav/authentication/AuthNavigator";
 import DrawerNavigator from "../nav/app/DrawerNavigator";
 import {fetchLocation, loginSuccess} from "../store/actions/user";
 import {fetchCategories} from "../store/actions/categories";
-import Loader from "../components/UI/Loader";
-import AuthHeader from "../components/auth/AuthHeader";
 import Constants from "expo-constants";
 import backgroundImage from "../assets/images/hack.png";
 
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
     },
-    startup:{
+    startup: {
         flex: 1
     },
     centerContainer: {

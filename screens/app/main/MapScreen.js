@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
-import {Alert, Platform, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Platform, StyleSheet, TouchableOpacity, View} from "react-native";
 import MapView, {Marker} from "react-native-maps";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {Ionicons} from "@expo/vector-icons";
@@ -133,7 +133,7 @@ const MapScreen = (props) => {
                 )}
             </View>
         );
-    } catch(err){
+    } catch (err) {
         throw err;
     }
 };

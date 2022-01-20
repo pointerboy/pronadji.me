@@ -1,5 +1,5 @@
 import React, {Suspense} from "react";
-import { LogBox } from 'react-native';
+import {LogBox} from 'react-native';
 import * as Font from "expo-font";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
