@@ -17,7 +17,11 @@ const pitanja = [
     },
     {
         title: 'Da li moram da okačim fotografiju na objavu?',
-        content: 'Naravno da ne, opis i ime kaoi i lokacija su sasvim dovoljni.'
+        content: 'Naravno da ne - opis i ime kao i lokacija su sasvim dovoljni.'
+    },
+    {
+        title: 'Kako obrisati objavu?',
+        content: 'Na kraju stranice možete pronaći ikonicu sa korpicom. Klikom na korpicu, Vaša objava se briše.',
     },
     {
         title: 'Da li je moj nalog anoniman drugim korisnicima?',
@@ -32,8 +36,13 @@ const pitanja = [
         content: 'Pored pravljena objave, preporučujemo odlazak u Centar Bezbjednosti i podnošenja zvanične prijave. ',
     },
     {
-        title: 'Fifth',
-        content: BACON_IPSUM,
+        title: 'Kako najbolje objaviti pronađenu stvar?',
+        content: 'Fotografišite predmet i dajte dovoljno detaljan opis. Ne zaboravite da dodate lokaciju na kojoj ste pronašli predmet.',
+    },
+    {
+        title: 'Šta ova platforma nije?',
+        content: 'pronadji.me služi kao pomoć prilikom traženja ili objave pronađenih stvari, ona kao takva nije zamjena za bilo kakvu insituciju ' +
+            'i ne može da se izjednači sa prijavama o nestalim/ukradenim predmetima. Platforma pronadji.me nije odgovorna za bilo kakvu štetu nanetu krajnjem korisniku.',
     },
 ];
 
@@ -112,7 +121,7 @@ const styles = StyleSheet.create({
     },
     title: {
         textAlign: 'center',
-        fontSize: 22,
+        fontSize: 26,
         fontWeight: '300',
         marginBottom: 20,
     },
@@ -125,7 +134,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
         textAlign: 'center',
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: '500',
     },
     content: {
