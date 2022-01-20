@@ -1,22 +1,18 @@
 import React from "react";
-import {FlatList, Platform, StyleSheet, View} from "react-native";
+import {FlatList, Platform, StyleSheet, View, Image, Text} from "react-native";
 
 import PostItem from "./PostItem";
 import CustomText from "../../UI/CustomText";
 import {Ionicons} from "@expo/vector-icons";
 import colors from "../../../shared/colors";
 
+import backgroundImage from "../../../assets/images/bez_objava.png"
+
 const PostList = (props) => {
     const emptyComponent = () => (
-        <View style={styles.emptyContainer}>
-            <Ionicons
-                name={
-                    Platform.OS === "android" ? "md-close-circle" : "ios-close-circle"
-                }
-                color="black"
-                size={80}
-            />
-            <CustomText style={styles.text}>Nema skorašnjih objava</CustomText>
+        <View style={styles.container}>
+            <Image source={backgroundImage} resizeMode="cover" style={styles.logo}/>
+            <Text style={styles.logoText}>Gledali smo svuda, prevrnuli svaki kamnečić, ali ništa nijesmo mogli naći.</Text>
         </View>
     );
 
@@ -83,6 +79,15 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 15,
+    },
+    container:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottom: 15,
+    },
+    logoText:{
+        fontSize: 16,
+        textAlign: "center"
     },
 });
 

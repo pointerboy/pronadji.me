@@ -152,7 +152,7 @@ export const createPost = (
             address: selectedLocation.address,
         });
 
-        let fileName = "bez_slike.png";
+        let fileName = "bez_objava.png";
         const ref = firebase.storage().ref().child("posts");
 
         if(selectedImage) {
