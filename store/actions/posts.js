@@ -29,6 +29,8 @@ export const fetchAllPosts = (currentLocation, radius) => {
             const id = post.id;
             const data = post.data();
 
+            console.log(data.userPhoneNumber);
+
             const date = new Date(data.postDate);
             posts.push(
                 new Post(
@@ -43,7 +45,8 @@ export const fetchAllPosts = (currentLocation, radius) => {
                     date,
                     data.uid,
                     post.distance,
-                    data.address
+                    data.address,
+                    data.userPhoneNumber
                 )
             );
         });
@@ -84,6 +87,8 @@ export const fetchMyPosts = (currentLocation) => {
                 lng: data.coordinates.longitude,
             });
 
+            const phoneNumber = firebase.auth().currentUser.phoneNumber;
+
             myPosts.push(
                 new Post(
                     id,
@@ -97,7 +102,8 @@ export const fetchMyPosts = (currentLocation) => {
                     new Date(data.postDate),
                     data.uid,
                     distance,
-                    data.address
+                    data.address,
+                    phoneNumber
                 )
             );
         });
@@ -173,6 +179,8 @@ export const createPost = (
             lng: selectedLocation.lng,
         });
 
+        const phoneNumber = firebase.auth().currentUser.phoneNumber;
+
         console.log(id,
             title,
             description,
@@ -184,7 +192,8 @@ export const createPost = (
             postDate,
             uid,
             distance,
-            selectedLocation.toString());
+            selectedLocation.toString()),
+            phoneNumber;
 
         dispatch({
             type: CREATE_POST,
@@ -200,7 +209,8 @@ export const createPost = (
                 postDate,
                 uid,
                 distance,
-                selectedLocation
+                selectedLocation,
+                phoneNumber
             ),
         });
     };

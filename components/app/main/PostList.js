@@ -29,6 +29,7 @@ const PostList = (props) => {
             postDate={itemData.item.postDate}
             distance={itemData.item.distance}
             uid = {itemData.item.uid}
+            userPhoneNumber = {itemData.item.userPhoneNumber}
             onPress={() => {
                 props.navigation.navigate("PostDetail", {
                     id: itemData.item.id,
@@ -44,7 +45,8 @@ const PostList = (props) => {
                     },
                     address: itemData.item.address,
                     distance: itemData.item.distance,
-                    uid: itemData.item.uid
+                    uid: itemData.item.uid,
+                    userPhoneNumber: itemData.item.userPhoneNumber
                 });
             }}
         />

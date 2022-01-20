@@ -9,7 +9,7 @@ import {Feather} from "@expo/vector-icons";
 import moment from "moment";
 import {useDispatch} from "react-redux";
 import {getCurrentUserId} from "../../../store/actions/user";
-import {deletePost} from "../../../store/actions/posts";
+import {deletePost, getOwnerPhoneNumber} from "../../../store/actions/posts";
 import {showError, showSuccess} from "../../../shared/utils";
 
 const PostDetailScreen = (props) => {
@@ -25,7 +25,8 @@ const PostDetailScreen = (props) => {
         categoryId,
         distance,
         postDate,
-        uid
+        uid,
+        userPhoneNumber
     } = props.route.params;
 
     const pressLocationHandler = () => {
@@ -93,6 +94,13 @@ const PostDetailScreen = (props) => {
                 </CustomText>
             </View>
 
+            <View style={styles.contactContainer}>
+                <Feather size={30} name={"phone"}/>
+                <CustomText style={styles.title}>
+                    {userPhoneNumber}
+                </CustomText>
+            </View>
+
             <View style={styles.titleContainer}>
                 <CustomText style={styles.title}>
                     Opis
@@ -154,6 +162,15 @@ const styles = StyleSheet.create({
         height: 90,
         borderRadius: 10,
         backgroundColor: colors.postLightBlue,
+    },
+    contactContainer: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginHorizontal: 10,
+        marginTop: 5,
+        height: 80,
+        borderRadius: 10,
+        backgroundColor: '#54d14b',
     },
     deleteContainer: {
         justifyContent: "center",

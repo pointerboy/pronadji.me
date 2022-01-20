@@ -11,7 +11,8 @@ class Post {
         postDate,
         uid,
         distance,
-        address
+        address,
+        userPhoneNumber
     ) {
         this.id = id;
         this.categoryId = categoryId;
@@ -25,6 +26,7 @@ class Post {
         this.uid = uid;
         this.distance = distance;
         this.address = address;
+        this.userPhoneNumber = userPhoneNumber;
     }
 }
 
