@@ -55,6 +55,13 @@ export const fetchAllPosts = (currentLocation, radius) => {
     };
 };
 
+export const deletePost = (id) => {
+    return async (dispatch) => {
+        const firestore = firebase.firestore();
+        await firestore.collection('posts').doc(id).delete();
+    }
+}
+
 export const fetchMyPosts = (currentLocation) => {
     return async (dispatch) => {
         // current user location

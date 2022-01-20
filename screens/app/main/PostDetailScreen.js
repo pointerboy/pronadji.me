@@ -1,5 +1,5 @@
-import React from "react";
-import {Image, ScrollView, StyleSheet, TouchableOpacity, View,} from "react-native";
+import React, {useState} from "react";
+import {Image, ScrollView, StyleSheet, TouchableOpacity, View} from "react-native";
 import {CardStyleInterpolators} from "@react-navigation/stack";
 
 import CustomText from "../../../components/UI/CustomText";
@@ -7,16 +7,25 @@ import colors from "../../../shared/colors";
 import CategoryList from "../../../components/app/main/CategoryList";
 import {Feather} from "@expo/vector-icons";
 import moment from "moment";
+import {useDispatch} from "react-redux";
+import {getCurrentUserId} from "../../../store/actions/user";
+import {deletePost} from "../../../store/actions/posts";
+import {showError, showSuccess} from "../../../shared/utils";
 
 const PostDetailScreen = (props) => {
+    const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
+
     const {
+        id,
         description,
         imageUrl,
         mapUrl,
         location,
         categoryId,
         distance,
-        postDate
+        postDate,
+        uid
     } = props.route.params;
 
     const pressLocationHandler = () => {
@@ -32,8 +41,23 @@ const PostDetailScreen = (props) => {
     let distanceText;
     distanceText = `${(distance * 1000).toFixed(0)}m`;
 
+    let userPostId = uid;
+    let loggedUserId = getCurrentUserId();
+
     moment.locale('sr');
     let date = moment(postDate).calendar();
+
+    const deleteThiPost = async () => {
+        setIsLoading(true);
+        try {
+            await dispatch(deletePost(id));
+        } catch (error) {
+            showError(error.message);
+        }
+        setIsLoading(false);
+        showSuccess("Objava je obrisana!");
+        props.navigation.navigate("Home");
+    }
 
     return (
         <ScrollView style={styles.screen}>
@@ -92,6 +116,14 @@ const PostDetailScreen = (props) => {
             >
                 <Image style={styles.image} source={{uri: mapUrl}}/>
             </TouchableOpacity>
+
+            {userPostId === loggedUserId && (
+                <View style={styles.deleteContainer}>
+                    <TouchableOpacity onPress={() => deleteThiPost(uid)}>
+                        <Feather size={35} name={"trash-2"}/>
+                    </TouchableOpacity>
+                </View>
+            )}
         </ScrollView>
     );
 };
@@ -122,6 +154,15 @@ const styles = StyleSheet.create({
         height: 90,
         borderRadius: 10,
         backgroundColor: colors.postLightBlue,
+    },
+    deleteContainer: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 15,
+        marginBottom: 10,
+        height: 80,
+        borderRadius: 5,
+        backgroundColor: '#ed4c28',
     },
     clockContainer: {
         justifyContent: "center",

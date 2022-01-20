@@ -22,13 +22,16 @@ const PostList = (props) => {
 
     const renderItem = (itemData) => (
         <PostItem
+            id={itemData.item.id}
             title={itemData.item.title}
             categoryId={itemData.item.categoryId}
             imageUrl={itemData.item.imageUrl}
             postDate={itemData.item.postDate}
             distance={itemData.item.distance}
+            uid = {itemData.item.uid}
             onPress={() => {
                 props.navigation.navigate("PostDetail", {
+                    id: itemData.item.id,
                     categoryId: itemData.item.categoryId,
                     title: itemData.item.title,
                     description: itemData.item.description,
@@ -40,7 +43,8 @@ const PostList = (props) => {
                         lng: itemData.item.lng,
                     },
                     address: itemData.item.address,
-                    distance: itemData.item.distance
+                    distance: itemData.item.distance,
+                    uid: itemData.item.uid
                 });
             }}
         />

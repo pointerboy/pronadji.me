@@ -12,11 +12,17 @@ export const SET_IMAGE_URL = "SET_IMAGE_URL";
 export const SET_PHONE_NUMBER = "SET_PHONE_NUMBER"
 export const RESET = "RESET";
 
+export const getCurrentUserId = () => {
+    return firebase.auth().currentUser.uid;
+}
+
 export const loginSuccess = () => {
     return async (dispatch) => {
         const uid = firebase.auth().currentUser.uid;
         const ref = await firebase.firestore().collection("users").doc(uid).get();
         const userData = ref.data();
+
+        console.log(uid);
 
         dispatch({
             type: SET_USER,
@@ -24,7 +30,8 @@ export const loginSuccess = () => {
                 email: userData.email,
                 nickname: userData.nickname,
                 imageUrl: userData.imageUrl,
-                phoneNumber: userData.phoneNumber
+                phoneNumber: userData.phoneNumber,
+                uid: uid
             },
         });
     };
