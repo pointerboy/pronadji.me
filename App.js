@@ -6,19 +6,10 @@ import {Provider} from "react-redux";
 import ReduxThunk from "redux-thunk";
 
 import "firebase/firestore";
-import i18n from "i18n-js";
 import "react-native-gesture-handler";
 
 import * as Sentry from 'sentry-expo';
 
-Sentry.init({
-    dsn: "https://e020fe0c33744f6bb5f12d723e38d8c6@o1120985.ingest.sentry.io/6157116",
-    // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-    // We recommend adjusting this value in production.
-    tracesSampleRate: 1.0,
-    enableInExpoDevelopment: true,
-    debug: true,
-});
 
 import userReducer from "./store/reducers/user";
 import postsReducer from "./store/reducers/posts";
@@ -46,15 +37,19 @@ if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 
-i18n.translations = {
-    en: require("./locales/en.json"),
-};
-
 const rootReducer = combineReducers({
     user: userReducer,
     posts: postsReducer,
     categories: categoriesReducer,
 });
+
+Sentry.init({
+    dsn: "https://e020fe0c33744f6bb5f12d723e38d8c6@o1120985.ingest.sentry.io/6157116",
+    tracesSampleRate: 1.0,
+    enableInExpoDevelopment: true,
+    debug: true,
+});
+
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 

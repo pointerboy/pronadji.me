@@ -13,7 +13,6 @@ import {Ionicons} from "@expo/vector-icons";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 import {useDispatch, useSelector} from "react-redux";
-import i18n from "i18n-js";
 
 import HeaderButton from "../../../components/UI/HeaderButton";
 import CustomText from "../../../components/UI/CustomText";

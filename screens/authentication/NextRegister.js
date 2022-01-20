@@ -4,13 +4,11 @@ import {CardStyleInterpolators} from "@react-navigation/stack";
 import {useDispatch} from "react-redux";
 import {connectActionSheet, useActionSheet,} from "@expo/react-native-action-sheet";
 import {Ionicons} from "@expo/vector-icons";
-import i18n from "i18n-js";
-
 
 
 import CustomTextInput from "../../components/UI/CustomTextInput";
 import MyButton from "../../components/UI/MyButton";
-import {showError, showSuccess, takeImage, takeImageActionSheetOptions,} from "../../shared/utils";
+import {showError, showSuccess,} from "../../shared/utils";
 import {signUp} from "../../store/actions/user";
 import Loader from "../../components/UI/Loader";
 import {handleImagePicker} from "../../shared/utils";

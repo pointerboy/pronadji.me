@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {Alert, Platform} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import {Toast} from "popup-ui";
-import i18n from "i18n-js";
 
 import ConfettiCannon from 'react-native-confetti-cannon';
 
@@ -53,7 +52,7 @@ export const showError = (
     icon = Platform.OS === "android" ? "md-close-circle" : "ios-close-circle"
 ) => {
     showToast(
-        i18n.t("utils.error"),
+        'Došlo je do greške!',
         text,
         colors.error,
         duration,
