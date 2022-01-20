@@ -30,7 +30,7 @@ const HomeScreen = (props) => {
 
     const loadPosts = useCallback(async () => {
         try {
-            await dispatch(fetchAllPosts(currentLocation, 5));
+            await dispatch(fetchAllPosts(currentLocation, 999));
         } catch (error) {
             showError(error.message);
         }
@@ -78,7 +78,7 @@ const HomeScreen = (props) => {
             />
 
             <View style={styles.titleContainer}>
-                <CustomText style={styles.title}>Objave blizu tebe</CustomText>
+                <CustomText style={styles.title}>Objave</CustomText>
             </View>
         </View>
     );
