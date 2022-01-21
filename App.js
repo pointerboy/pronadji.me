@@ -1,6 +1,5 @@
 import React, {Suspense} from "react";
 import {LogBox} from 'react-native';
-import * as Font from "expo-font";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ReduxThunk from "redux-thunk";
@@ -9,7 +8,6 @@ import "firebase/firestore";
 import "react-native-gesture-handler";
 
 import * as Sentry from 'sentry-expo';
-
 
 import userReducer from "./store/reducers/user";
 import postsReducer from "./store/reducers/posts";
@@ -47,19 +45,11 @@ Sentry.init({
     dsn: "https://e020fe0c33744f6bb5f12d723e38d8c6@o1120985.ingest.sentry.io/6157116",
     tracesSampleRate: 1.0,
     enableInExpoDevelopment: true,
-    debug: true,
+    debug: true, // ova opcija dozvoljava slanje crash logova na sentry cak i u produkciji
 });
 
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
-
-const fetchFonts = () => {
-    return Font.loadAsync({
-        kanit: require("./assets/fonts/Kanit-Regular.ttf"),
-        "kanit-light": require("./assets/fonts/Kanit-Light.ttf"),
-        "kanit-bold": require("./assets/fonts/Kanit-Bold.ttf"),
-    });
-};
 
 export default function App() {
     return (
