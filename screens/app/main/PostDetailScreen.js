@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         height: 80,
         borderRadius: 10,
-        backgroundColor: '#54d14b',
+        backgroundColor: '#7dc775',
     },
     deleteContainer: {
         justifyContent: "center",
