@@ -20,7 +20,7 @@ const DrawerContent = (props) => {
                 <Image
                     style={styles.logo}
                 />
-                <CustomText style={styles.title}>Lost & Found</CustomText>
+                <CustomText style={styles.title}>pronadji.me</CustomText>
             </View>
             <DrawerItemList {...props} />
             <DrawerItem

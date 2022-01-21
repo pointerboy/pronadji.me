@@ -47,7 +47,7 @@ const MainNavigator = (props) => {
 
 export const navigatorOptions = (navData) => {
     return {
-        title: 'Lost And Found', headerTitleAlign: 'center',
+        title: 'pronadji.me', headerTitleAlign: 'center',
         drawerIcon: ({size, color}) => (
             <Ionicons
                 name={Platform.OS === "android" ? "md-home" : "ios-home"}

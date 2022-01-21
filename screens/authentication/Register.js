@@ -52,7 +52,7 @@ const SignUpScreen = (props) => {
                     <ImageBackground source={backgroundImage} style={styles.accCreationHeader}/>
                     <AuthHeader
                         style={styles.centerContainer}
-                        title="Lost & Found"
+                        title="pronadji.me"
                         subtitle="Kreiranje naloga"
                     />
 
