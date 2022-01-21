@@ -1,5 +1,6 @@
 {
   "expo": {
+    "userInterfaceStyle": "light",
     "hooks": {
       "postPublish": [
         {
