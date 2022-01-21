@@ -85,8 +85,6 @@ export const fetchMyPosts = (currentLocation) => {
                 lng: data.coordinates.longitude,
             });
 
-            const phoneNumber = firebase.auth().currentUser.phoneNumber;
-
             myPosts.push(
                 new Post(
                     id,
@@ -101,7 +99,7 @@ export const fetchMyPosts = (currentLocation) => {
                     data.uid,
                     distance,
                     data.address,
-                    phoneNumber
+                    data.userPhoneNumber
                 )
             );
         });
@@ -119,17 +117,10 @@ export const createPost = (
     categoryId,
     selectedImage,
     selectedLocation,
-    postDate
+    postDate,
+    userPhoneNumber
 ) => {
     return async (dispatch, getState) => {
-
-        console.log(
-            "Title" + title + '\n',
-            "Desc: " + description + '\n',
-            "Cat:" + categoryId + '\n',
-            "Image" + selectedImage + '\n',
-            "Location" + selectedLocation + '\n',
-            "Date" + postDate + '\n');
 
         selectedLocation.address = 'proba_123';
 
@@ -150,9 +141,10 @@ export const createPost = (
             postDate: postDate.toISOString(),
             uid,
             address: selectedLocation.address,
+            userPhoneNumber: userPhoneNumber
         });
 
-        let fileName = "bez_objava.png";
+        let fileName = "bez_slike.png";
         const ref = firebase.storage().ref().child("posts");
 
         if (selectedImage) {
@@ -177,22 +169,6 @@ export const createPost = (
             lng: selectedLocation.lng,
         });
 
-        const phoneNumber = firebase.auth().currentUser.phoneNumber;
-
-        console.log(id,
-            title,
-            description,
-            categoryId,
-            imageUrl,
-            selectedLocation.mapUrl,
-            selectedLocation.lat,
-            selectedLocation.lng,
-            postDate,
-            uid,
-            distance,
-            selectedLocation.toString()),
-            phoneNumber;
-
         dispatch({
             type: CREATE_POST,
             post: new Post(
@@ -208,7 +184,7 @@ export const createPost = (
                 uid,
                 distance,
                 selectedLocation,
-                phoneNumber
+                userPhoneNumber
             ),
         });
     };

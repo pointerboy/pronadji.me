@@ -33,6 +33,8 @@ const CreatePostScreen = (props) => {
 
     const {showActionSheetWithOptions} = useActionSheet();
 
+    const user = useSelector((state) => state.user);
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [categoryId, setCategoryId] = useState(initialCategoryId);
@@ -100,13 +102,15 @@ const CreatePostScreen = (props) => {
                         categoryId,
                         selectedImage,
                         selectedLocation,
-                        new Date(Date.now())
+                        new Date(Date.now()),
+                        user.phoneNumber,
                     )
                 );
                 showSuccess('Objava je uspješno postavljena!', title);
                 props.navigation.goBack();
             } catch (error) {
                 showError("Došlo je do greške. Pokušajte ponovo.");
+                throw error;
             }
         } else {
             showError("Morate popuniti polje za unos imena i opisa predmeta!");
