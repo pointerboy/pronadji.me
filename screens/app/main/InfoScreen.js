@@ -7,9 +7,6 @@ import * as Animatable from 'react-native-animatable';
 import Accordion from 'react-native-collapsible/Accordion';
 import {Feather} from "@expo/vector-icons";
 
-const BACON_IPSUM =
-    'Bacon ipsum dolor amet chuck turducken landjaeger tongue spare ribs. Picanha beef prosciutto meatball turkey shoulder shank salami cupim doner jowl pork belly cow. Chicken shankle rump swine tail frankfurter meatloaf ground round flank ham hock tongue shank andouille boudin brisket. ';
-
 const pitanja = [
     {
         title: 'Kako da napravim objavu?',
@@ -25,7 +22,7 @@ const pitanja = [
     },
     {
         title: 'Da li je moj nalog anoniman drugim korisnicima?',
-        content: 'Drugi korisnici mogu videte samo Vaš broj telefona, korisničko ime kao i mejl su skriveni.',
+        content: 'Drugi korisnici mogu videti samo Vaš broj telefona. Korisničko ime kao i mejl su skriveni.',
     },
     {
         title: 'Da li mogu da obrišem svoj nalog?',
@@ -37,7 +34,7 @@ const pitanja = [
     },
     {
         title: 'Kako najbolje objaviti pronađenu stvar?',
-        content: 'Fotografišite predmet i dajte dovoljno detaljan opis. Ne zaboravite da dodate lokaciju na kojoj ste pronašli predmet.',
+        content: 'Ako je moguće, fotografišite predmet,  ili dajte dovoljno detaljan opis. Ne zaboravite da dodate lokaciju na kojoj ste pronašli predmet.',
     },
     {
         title: 'Šta ova platforma nije?',
