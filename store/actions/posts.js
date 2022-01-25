@@ -122,7 +122,10 @@ export const createPost = (
 ) => {
     return async (dispatch, getState) => {
 
-        selectedLocation.address = 'proba_123';
+        selectedLocation.address = '';
+        // bivši geolocating API od gugla je vraćao ulicu koju je korisnik selektovao ali pošto je sada plaćen proizvod,
+        // odlučili smo se za alternativu, koja, na žalost, ne vraća ovakav podatak ali smo ostavili prostora za budući razvoj
+
 
         const uid = firebase.auth().currentUser.uid;
         const firestore = firebase.firestore();
